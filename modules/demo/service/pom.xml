@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.sinitek.managerdemo</groupId>
+    <artifactId>managerdemo-demo-service</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <spirit.version>2.0-SNAPSHOT</spirit.version>
+
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- 公司内部框架 开始-->
+
+            <dependency>
+                <groupId>com.sinitek.spirit</groupId>
+                <artifactId>spirit.service.core</artifactId>
+                <version>${spirit.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+
+        <!-- 公司内部框架 开始-->
+
+        <dependency>
+            <groupId>com.sinitek.spirit</groupId>
+            <artifactId>spirit.service.core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sinitek.managerdemo</groupId>
+            <artifactId>managerdemo-demo-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+    <repositories>
+
+        <repository>
+            <id>public</id>
+            <url>http://maven.sinitek-corp.com/content/groups/public/</url>
+            <!--<url>http://localhost:8081/nexus/content/groups/public/</url>-->
+        </repository>
+        <repository>
+            <id>snapshots</id>
+            <url>http://maven.sinitek-corp.com/content/repositories/snapshots/</url>
+        </repository>
+
+    </repositories>
+    <build>
+        <plugins>
+            <!--发布源代码-->
+<!--            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>-->
+
+            <!--发布jdoc-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <show>private</show>
+                    <nohelp>true</nohelp>
+                </configuration>
+            </plugin>
+
+            <!-- 声明不需要自动运行测试案例类 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12.4</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html style="overflow:auto;">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>首页</title>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="X-UA-Compatible" content="IE=IE8" >
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="X-UA-Compatible" content="IE=IE8" >
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../js/jquery-ui.js"></script>
+<script type="text/javascript" src="../../js/jquery-plugin.js"></script>
+<script type="text/javascript" src="../../js/stk-core.js"></script>
+<script type="text/javascript" src="../../js/stk-tools.js"></script>
+<script type="text/javascript" src="../../js/stk-api.js"></script>
+<script type="text/javascript" src="../../js/stk-frame.js"></script>
+<script type="text/javascript" src="../../../demo.js"></script>
+<!¨C[if IE]>
+<script type="text/javascript" src="../../js/html5.js"></script>
+<![endif]¨C>
+<link type="text/css" href="jquery-ui.css" rel="stylesheet" />
+<link type="text/css" href="jquery-plugin.css" rel="stylesheet" />
+<link type="text/css" href="stk.css" rel="stylesheet" />
+<link type="text/css" href="frame.css" rel="stylesheet"/>
+<script type="text/javascript">
+$(function(){
+
+/////////////////////////////////////////////////////////////////
+/////////消息提示测试与使用开始
+////////////////////////////////////////////////////////////////
+
+STK.initNoticeTip();
+STK.showNoticeTip();
+
+//设置无限制显示汇总信息数目，默认为3，-1则无限制
+//STK.setNoticeTipMaxCollect(-1);
+
+STK.pushNoticeTipCollect('sy', '<strong>15</strong>条未处理事宜，<a href="#">查看事宜</a>');
+STK.pushNoticeTipCollect('msg', '<strong>3</strong>条新信息，<a href="#">查看消息</a>');
+STK.pushNoticeTipCollect('sy1', '<strong>15</strong>条未处理事宜，<a href="#">查看事宜</a>');
+
+STK.pushNoticeTipCollect('sy2', '<strong>15</strong>条未处理事宜，<a href="#">查看事宜</a>');
+
+
+//测试替换与移除
+setTimeout(function(){
+	//测试替换
+	STK.pushNoticeTipCollect('sy', '<strong>16</strong>条未处理事宜，<a href="#">查看事宜</a>');
+
+	setTimeout(function(){
+		//测试移除
+		STK.removeNoticeTipCollect('sy');
+	},5000);
+},5000);
+
+//设置无限制显示消息数目，默认为5，-1则无限制
+//STK.setNoticeTipMaxMeaasge(-1);
+
+STK.pushNoticeTipMessage(1, '中金公司融资融券一周速递', '中金公司融资融券一周速递中金公司融资融券一周速递', function(){
+	alert(this.innerHTML);
+});
+
+STK.pushNoticeTipMessage(2, '中金公司融资融券一周速递2', '中金公司融资融券一周速递中金公司融资融券一周速递2');
+STK.pushNoticeTipMessage(3, '中金公司融资融券一周速递3', '中金公司融资融券一周速递中金公司融资融券一周速递3');
+
+//测试替换与移除
+setTimeout(function(){
+	//测试替换
+	STK.pushNoticeTipMessage(1, '1111', '中金公司融资融券一周速递中金公司融资融券一周速递1111');
+
+	setTimeout(function(){
+		//测试移除
+		STK.removeNoticeTipMessage(1);
+	},5000);
+},5000);
+
+//测试隐藏消息提示
+setTimeout(function(){
+	STK.hideNoticeTip();
+},20000);
+/////////////////////////////////////////////////////////////////
+/////////消息提示测试与使用结束
+////////////////////////////////////////////////////////////////
+
+	
+
+STK.init({
+		menuObj : menuObj
+	});
+});
+function parseSTR(o) {
+    var r = [];
+    if (typeof o == "string" || o == null) {
+        return '"' + o + '"';
+    }
+    if (typeof o == 'number') {
+        return o;
+    }
+    if (typeof o == "object") {
+        if (!o.sort) {
+            r[0] = "{"
+            for (var i in o) {
+                r[r.length] = '"' + i + '"';
+                r[r.length] = ":";
+                r[r.length] = obj2str(o[i]);
+                r[r.length] = ",";
+            }
+            r[r.length - 1] = "}"
+        } else {
+            r[0] = "["
+            for (var i = 0; i < o.length; i++) {
+                r[r.length] = obj2str(o[i]);
+                r[r.length] = ",";
+            }
+            r[r.length - 1] = "]"
+        }
+        return r.join("");
+    }
+    return o.toString();
+}
+</script>
+</head>
+
+<body>
+<header id="J_common_header" class="common-header">
+<nav class="common-header-nav">
+<ul id="J_mainnav">
+<li class='selected'><a class="nav-1 hidefocus" href="javascript:void(0);" onclick="STK.menuDo(1);"><b></b>个人中心</a></li>
+<li><a class="nav-5" href="javascript:void(0);" onclick="STK.menuDo(1);"><b></b>基础数据</a></li>
+<li><a class="nav-3" href="javascript:void(0);" onclick="STK.menuDo(2);"><b></b>买方过程</a></li>
+<li><a class="nav-4" href="javascript:void(0);" onclick="STK.menuDo(3);"><b></b>卖方过程</a></li>
+<li><a class="nav-6" href="javascript:void(0);" onclick="STK.menuDo(5);"><b></b>系统管理</a></li>
+</ul>
+<script type="text/javascript">
+$('#J_mainnav li').click(function(){
+	$('#J_mainnav li').removeClass('selected');
+	$(this).addClass('selected');
+});
+</script>
+</nav>
+<aside class="common-header-aside">
+    <div class="top-bar">
+        <figure class="figure">
+        <img src="../common/images/logo-taikang.png">
+        </figure>
+        <time class="time" id="time">2011-01-01 12:00:00</time>
+        <!--<div class="skinlist">-->
+            <!--<ul>-->
+                <!--<li class="blueSelect"><img src="../common/images/blank.gif" alt="蓝色"></li>-->
+                <!--<li class="default"><img src="../common/images/blank.gif" alt="黑色" onclick="document.location='../default/index.html'"></li>-->
+                <!--<li class="orange"><img src="../common/images/blank.gif" alt="橙色" onclick="document.location='../orange/index.html'"></li>-->
+                <!--<li class="red"><img src="../common/images/blank.gif" alt="红色" onclick="document.location='../red/index.html'"></li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    </div>
+    <div class="info-bar"><a href="#" class="username">陈国庆</a><b class="split">|</b><a href="#" class="message">2</a><a href="#" class="totalperson">25</a><a href="#" class="information">3</a><b class="split">|</b><a href="#" class="support">支持中心</a><b class="split">|</b><a href="#" class="logout">退出</a><a href="#" class="language"><b class="icon-world flag_us"></b>语言</a></div>
+</aside>
+</header>
+<section id="J_common_section" class="common-section">
+<aside id="J_common_aside" class="com-sec-aside">
+<h2 class="com-sec-title tt1">
+<span id="J_main_title"></span><span class="search-input position"><input class="stk-input " type="text" style="width: 12px"><b class="com-sec-aside-more-opt"></b></span>
+</h2>
+<nav id="J_common_sec_aside_nav" class="com-sec-aside-nav">
+</nav>
+</aside>
+<b id="J_left_nav_ext_btn" class="left-nav-ext-btn"></b>
+<article id="J_common_article" class="com-art">
+<nav class="com-art-nav">
+<ul id="J_commonNavTabBar">
+</ul>
+<b class="close-all" title="关闭全部"><span class="common-bg nav-l-bg" onclick="STK.closeNav('ALL',event)"><i class="common-bg-icon nav-close"></i></span><b class="common-bg nav-r-bg"></b></b>
+</nav>
+<section id="J_common_panel_section" class="common-show-panel-section" style="position:relative">
+</section>
+</article>
+</section>
+</body>
+</html>

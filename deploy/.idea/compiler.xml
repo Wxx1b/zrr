@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+      <entry name="!?*.aj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="managerdemo-demo-service" />
+        <module name="managerdemo-demo-web" />
+        <module name="managerdemo-sirmdemo-service" />
+        <module name="managerdemo-sirmdemo-web" />
+      </profile>
+      <profile default="false" name="Annotation profile for deploy-manager" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="deploy-manager" />
+      </profile>
+      <profile default="false" name="Annotation profile for deploy-service" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="deploy-service" />
+      </profile>
+      <profile default="false" name="Annotation profile for managerdemo-demo-common" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="managerdemo-demo-common" />
+      </profile>
+      <profile default="false" name="Annotation profile for managerdemo-demo-action" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="managerdemo-demo-action" />
+      </profile>
+      <profile default="false" name="Annotation profile for managerdemo-sirmdemo-action" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="managerdemo-sirmdemo-action" />
+      </profile>
+      <profile default="false" name="Annotation profile for managerdemo-sirmdemo-common" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="managerdemo-sirmdemo-common" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="deploy" target="1.6" />
+      <module name="deploy-manager" target="1.6" />
+      <module name="deploy-service" target="1.6" />
+      <module name="managerdemo-demo" target="1.5" />
+      <module name="managerdemo-demo-action" target="1.6" />
+      <module name="managerdemo-demo-common" target="1.6" />
+      <module name="managerdemo-demo-service" target="1.5" />
+      <module name="managerdemo-demo-web" target="1.5" />
+      <module name="managerdemo-modules" target="1.5" />
+      <module name="managerdemo-sirmdemo" target="1.5" />
+      <module name="managerdemo-sirmdemo-action" target="1.6" />
+      <module name="managerdemo-sirmdemo-common" target="1.6" />
+      <module name="managerdemo-sirmdemo-service" target="1.5" />
+      <module name="managerdemo-sirmdemo-web" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

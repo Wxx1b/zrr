@@ -1,0 +1,230 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>报告</title>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="X-UA-Compatible" content="IE=IE8" >
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="X-UA-Compatible" content="IE=IE8" >
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../js/jquery-ui.js"></script>
+<script type="text/javascript" src="../../js/jquery-plugin.js"></script>
+<script type="text/javascript" src="../../js/stk-core.js"></script>
+<script type="text/javascript" src="../../js/stk-tools.js"></script>
+<script type="text/javascript" src="../../js/stk-api.js"></script>
+<!¨C[if IE]>
+<script type="text/javascript" src="../../js/html5.js"></script>
+<![endif]¨C>
+<link type="text/css" href="jquery-ui.css" rel="stylesheet" />
+<link type="text/css" href="jquery-plugin.css" rel="stylesheet" />
+<link type="text/css" href="stk.css" rel="stylesheet" />
+
+<script type="text/javascript">
+(function($){
+	$.extend($.fn,{
+		tipExtra : function(setting){
+			var opt = $.extend({
+				html : 'ddd',
+				width : 'auto'
+			});
+			var tip = $('<div/>').css({
+					"position" : "absolute",
+					"width" : opt.width,
+					"z-index" : 10000,
+					"display" : "none",
+					"border" : "1px solid #bfbfbf"
+				}).append(opt.html);
+			var _wh = $.offHeight();
+			var bg = $('<div style="position:absolute;top:0;left:0;width:100%;height:'+_wh+'px;z-index:9999;background-color:transparent"></div>').click(function(){
+					tip.remove();
+					$(this).remove();
+				});
+			$(this).click(function(){
+				tip.appendTo('body').show();
+				bg.appendTo('body').show();
+			})
+			
+			
+			
+		}
+	});
+})(jQuery)
+$(function(){
+	$('#J_extra_1').tipExtra();
+	STK.init()
+});
+
+function WALL_web(){
+    var WshShell = new ActiveXObject('WScript.Shell')
+    WshShell.SendKeys('{F11}');
+}
+$(function(){
+	WALL_web();
+})
+</script>
+</head>
+
+<body >
+
+<div class="index-main-panel">
+<h3 class="index-welcome-info">早上好，陈国庆<span class="summary">（管理员）</span></h3>
+<div class="index-drag-fra">
+    <div class="index-drag-column" style="margin-right:-1px;">
+        <ul class="index-drag-column-ul">
+        <li class="index-drag-box">
+            <b class="boxbannertop"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            <div class="box-body">
+                <div class="box-title">
+                    <b class="index-icon icon-1"></b>
+                    <h3 class="box-header-title title-1 fl mr10">关注股票报告</h3>
+                    <div class="fl">|&nbsp;&nbsp;&nbsp;更新<span class="new-rep-num">（15）</span>篇报告</div>
+                </div>
+                <div class="box-content">
+                    <ul class="rep-list-ul">
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                    </ul>
+                </div>
+                <div class="box-opt-bar"><b id="J_extra_1" class="common-bg-icon expend"></b><b class="common-bg-icon close"></b></div>
+            </div>
+            <b class="boxbannerbottom"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+        </li>
+        <li class="index-drag-box">
+            <b class="boxbannertop"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            <div class="box-body">
+                <div class="box-title">
+                    <b class="index-icon icon-3"></b>
+                    <h3 class="box-header-title title-3  fl mr10">行业</h3>
+                    <div class="fl">|&nbsp;&nbsp;&nbsp;更新<span class="new-rep-num">（15）</span>篇报告</div>
+                </div>
+                <div class="box-content">
+                    <ul class="rep-list-ul">
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                        
+                    </ul>
+                </div>
+                <div class="box-opt-bar"><b class="common-bg-icon expend"></b><b class="common-bg-icon close"></b></div>
+            </div>
+            <b class="boxbannerbottom"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+        </li>
+        <li class="index-drag-box">
+            <b class="boxbannertop"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            <div class="box-body">
+                <div class="box-title">
+                    <b class="index-icon icon-5"></b>
+                    <h3 class="box-header-title title-5 fl mr10">基金</h3>
+                    <div class="fl">|&nbsp;&nbsp;&nbsp;更新<span class="new-rep-num">（15）</span>篇报告</div>
+                </div>
+                <div class="box-content">
+                    <ul class="rep-list-ul">
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                        
+                    </ul>
+                </div>
+                <div class="box-opt-bar"><b class="common-bg-icon expend"></b><b class="common-bg-icon close"></b></div>
+            </div>
+            <b class="boxbannerbottom"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+        </li>
+        </ul>
+    </div>
+    <div class="index-drag-column">
+        <ul class="index-drag-column-ul">
+        <li class="index-drag-box">
+            <b class="boxbannertop"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            <div class="box-body">
+                <div class="box-title">
+                    <b class="index-icon icon-2"></b>
+                    <h3 class="box-header-title title-2 fl mr10">股票</h3>
+                    <div class="fl">|&nbsp;&nbsp;&nbsp;更新<span class="new-rep-num">（15）</span>篇报告</div>
+                </div>
+                <div class="box-content">
+                    <ul class="rep-list-ul">
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                        
+                    </ul>
+                </div>
+                <div class="box-opt-bar"><b class="common-bg-icon expend"></b><b class="common-bg-icon close"></b></div>
+            </div>
+            <b class="boxbannerbottom"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+        </li>
+        <li class="index-drag-box">
+            <b class="boxbannertop"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            <div class="box-body">
+                <div class="box-title">
+                    <b class="index-icon icon-4"></b>
+                    <h3 class="box-header-title title-4 fl mr10">债券</h3>
+                    <div class="fl">|&nbsp;&nbsp;&nbsp;更新<span class="new-rep-num">（15）</span>篇报告</div>
+                </div>
+                <div class="box-content">
+                    <ul class="rep-list-ul">
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                        
+                    </ul>
+                </div>
+                <div class="box-opt-bar"><b class="common-bg-icon expend"></b><b class="common-bg-icon close"></b></div>
+            </div>
+            <b class="boxbannerbottom"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+        </li>
+        <li class="index-drag-box">
+            <b class="boxbannertop"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            <div class="box-body">
+                <div class="box-title">
+                    <b class="index-icon icon-6"></b>
+                    <h3 class="box-header-title title-6 fl mr10">投资池</h3>
+                    <div class="fl">|&nbsp;&nbsp;&nbsp;更新<span class="new-rep-num">（15）</span>篇报告</div>
+                </div>
+                <div class="box-content">
+                    <ul class="rep-list-ul">
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                        <li><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span> - 2011/02/13</span></li>
+                        
+                    </ul>
+                </div>
+                <div class="box-opt-bar"><b class="common-bg-icon expend"></b><b class="common-bg-icon close"></b></div>
+            </div>
+            <b class="boxbannerbottom"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+        </li>
+        </ul>
+    </div>
+</div>
+
+<div style="margin:20px;">
+	<ul>
+    	<li><b class="icon-rep1"></b> <a href="#">研究报告-研究报告</a></li>
+        <li><b class="icon-rep2"></b> <a href="#">股票研究-股票研究</a></li>
+        <li><b class="icon-rep3"></b> <a href="#">行业研究-行业研究</a></li>
+        <li><b class="icon-tou"></b> <a href="#">投资池-投资池</a></li>
+		<li><b class="icon-out"></b> <a href="#">外出-外出</a></li>
+        <li><b class="icon-crm"></b> <a href="#">CRM服务-CRM服务</a></li>
+        <li><b class="icon-jdjl"></b> <a href="#">进度记录</a></li>
+        <li><b class="icon-qdlx"></b> <a href="#">启动立项</a></li>        
+    </ul>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+        "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+
+
+<taglib>
+    <tlib-version>0.0.1</tlib-version>
+    <jsp-version>1.2</jsp-version>
+    <short-name>org</short-name>
+    <uri>http://www.sinitek.com/sirm/org/tag</uri>
+    <display-name>"Sinitek Tools Tags"</display-name>
+    <description>组织结构签库</description>
+
+
+    <tag>
+        <name>userlist</name>
+        <tag-class>com.sinitek.managerframework.org.tag.UserInfoTag</tag-class>
+        <body-content>JSP</body-content>
+        <description>获取员工列表</description>
+
+
+        <attribute>
+            <name>postId</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>岗位编号</description>
+        </attribute>
+        <attribute>
+            <name>userlists</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>列表名</description>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>structure</name>
+        <tag-class>com.sinitek.managerframework.org.tag.StructureTag</tag-class>
+        <body-content>JSP</body-content>
+        <description>获取部门列表</description>
+
+
+        <attribute>
+            <name>parentid</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>父类编号</description>
+        </attribute>
+        <attribute>
+            <name>structurelists</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>列表名</description>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>position</name>
+        <tag-class>com.sinitek.managerframework.org.tag.PositionTag</tag-class>
+        <body-content>JSP</body-content>
+        <description>获取部门下岗位列表</description>
+
+
+        <attribute>
+            <name>unitid</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>部门编号</description>
+        </attribute>
+        <attribute>
+            <name>positionlists</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>列表名</description>
+        </attribute>
+    </tag>
+    <tag>
+        <name>employeeTag</name>
+        <tag-class>com.sinitek.managerframework.org.tag.GetEmployeeTag</tag-class>
+        <body-content>JSP</body-content>
+        <description>根据员工编号</description>
+
+
+        <attribute>
+            <name>var</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>实体</description>
+        </attribute>
+        <attribute>
+            <name>orgid</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>组织结构编号</description>
+        </attribute>
+    </tag>
+    <tag>
+        <name>orgTag</name>
+        <tag-class>com.sinitek.managerframework.org.tag.OrgTag</tag-class>
+        <body-content>JSP</body-content>
+        <description>查询部门岗位列表</description>
+
+        <attribute>
+            <name>orglist</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>列表名称</description>
+        </attribute>
+    </tag>
+    <tag>
+        <name>roleTag</name>
+        <tag-class>com.sinitek.managerframework.org.tag.RoleTag</tag-class>
+        <body-content>JSP</body-content>
+        <description>查询角色列表</description>
+
+        <attribute>
+            <name>rolelist</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>列表名称</description>
+        </attribute>
+    </tag>
+    <tag>
+        <name>checkFuncTag</name>
+        <tag-class>com.sinitek.managerframework.org.tag.CheckFuncTag</tag-class>
+        <body-content>JSP</body-content>
+        <description>判断当前登录用户是否有该功能权限</description>
+
+        <attribute>
+            <name>var</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>变量名称</description>
+        </attribute>
+        <attribute>
+            <name>funccode</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>功能代码</description>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>OrgTreeTag</name>
+        <tag-class>com.sinitek.managerframework.org.tag.OrgTreeTag</tag-class>
+        <body-content>JSP</body-content>
+        <description>查询组织结构树</description>
+
+        <attribute>
+            <name>orglist</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>列表名称</description>
+        </attribute>
+        <attribute>
+            <name>isshowposition</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>是否显示岗位</description>
+        </attribute>
+        <attribute>
+            <name>isshowrole</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>是否显示角色</description>
+        </attribute>
+        <attribute>
+            <name>isshowemp</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>是否显示员工</description>
+        </attribute>
+        <attribute>
+            <name>isshowteam</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>是否显示小组</description>
+        </attribute>
+        <attribute>
+            <name>shownopositionemp</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description>是否显示未分配岗位员工</description>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>Team</name>
+        <tag-class>com.sinitek.managerframework.org.tag.TeamInfoTag</tag-class>
+        <body-content>JSP</body-content>
+        <description>获取小组列表</description>
+
+        <attribute>
+            <name>teamlists</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>列表名</description>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>SelectOrg</name>
+        <tag-class>com.sinitek.managerframework.org.tag.CandidateControlTag</tag-class>
+        <body-content>JSP</body-content>
+        <description>选人控件</description>
+
+        <attribute>
+            <name>mode</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>选人控件的类型 (user[选人]\org[选组织结构]\DEPT[部门]\TEAM[小组])</description>
+        </attribute>
+
+        <attribute>
+            <name>multi</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>单选还是多选(true[多选]\false[单选])</description>
+        </attribute>
+        <attribute>
+            <name>prefix</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>控件唯一标识</description>
+        </attribute>
+        <attribute>
+            <name>width</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>选人控件宽度</description>
+        </attribute>
+        <attribute>
+            <name>selectWidth</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>选人控件自动完成框宽度</description>
+        </attribute>
+        <attribute>
+            <name>code</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>选人控件方案代码</description>
+        </attribute>
+        <attribute>
+            <name>readOnly</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>选人控件是否只读</description>
+        </attribute>
+        <attribute>
+            <name>callbackfn</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>选人控件回调函数</description>
+        </attribute>
+        <attribute>
+            <name>hiddenId</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>选人控件隐藏域名字</description>
+        </attribute>
+
+        <attribute>
+            <name>render</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>是否显示层(true[不显示层]\false[显示层])</description>
+        </attribute>
+
+        <attribute>
+            <name>unitlimitflag</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>是否限定部门</description>
+        </attribute>
+        <attribute>
+            <name>showposition</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>选人控件在部门选择模式下否显示岗位</description>
+        </attribute>
+        <attribute>
+            <name>deptid</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>部门id</description>
+        </attribute>
+
+        <attribute>
+            <name>teamid</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>小组id</description>
+        </attribute>
+
+        <attribute>
+            <name>positionid</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>小组id</description>
+        </attribute>
+
+    </tag>
+
+    <tag>
+        <name>SelectTeam</name>
+        <tag-class>com.sinitek.managerframework.org.tag.TeamControlTag</tag-class>
+        <body-content>JSP</body-content>
+        <description>选人控件</description>
+
+        <attribute>
+            <name>height</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>控件高度</description>
+        </attribute>
+
+        <attribute>
+            <name>multi</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>单选还是多选(true[多选]\false[单选])</description>
+        </attribute>
+        <attribute>
+            <name>prefix</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>控件唯一标识</description>
+        </attribute>
+        <attribute>
+            <name>callbackfn</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>回调函数</description>
+        </attribute>
+    </tag>
+</taglib>

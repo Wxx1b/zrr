@@ -1,0 +1,11 @@
+com\sinitek\managerdemo\demo\common\enums\DemoEnum.class
+com\sinitek\managerdemo\demo\common\entity\DemoImpl.class
+com\sinitek\managerdemo\demo\common\api\DemoAPIImpl.class
+com\sinitek\managerdemo\demo\common\enums\AgeBusinessExceptionEnum.class
+com\sinitek\managerdemo\demo\common\entity\IDemo.class
+com\sinitek\managerdemo\demo\common\entity\DemoObjectImpl.class
+com\sinitek\managerdemo\demo\common\api\IDemoAPI.class
+com\sinitek\managerdemo\demo\common\entity\IDemoObject2.class
+com\sinitek\managerdemo\demo\common\entity\IDemoObject.class
+com\sinitek\managerdemo\demo\common\entity\DemoObject2Impl.class
+com\sinitek\managerdemo\demo\common\enums\GenderEnums.class

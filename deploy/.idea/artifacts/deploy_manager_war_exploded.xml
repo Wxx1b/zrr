@@ -1,0 +1,164 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="deploy-manager:war exploded">
+    <output-path>$PROJECT_DIR$/manager/target/deploy-manager-1.0-SNAPSHOT</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="deploy-manager" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: taglibs:standard:1.1.2" />
+          <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
+          <element id="library" level="project" name="Maven: oracle.jdbc.OracleDriver:ojdbc:14" />
+          <element id="library" level="project" name="Maven: org.hsqldb:hsqldb:2.3.3" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.18" />
+          <element id="archive" name="managerdemo-demo-action-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="managerdemo-demo-action" />
+          </element>
+          <element id="library" level="project" name="Maven: com.sinitek.managerframework:managerframework-base-action:1.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: com.sinitek.spirit:spirit.service.core:2.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: sfm.tools:com.sinitek.base.control.server:0.9.0" />
+          <element id="archive" name="managerdemo-demo-common-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="managerdemo-demo-common" />
+          </element>
+          <element id="library" level="project" name="Maven: com.sinitek.spirit:sinitek.spirit.metadb2:2.0.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: org.mongodb:mongo-java-driver:2.10.1" />
+          <element id="library" level="project" name="Maven: org.springframework.data:spring-data-mongodb:1.3.3.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-tx:3.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.data:spring-data-commons:1.6.3.RELEASE" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.1" />
+          <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.7.1" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate:3.2.6.ga" />
+          <element id="library" level="project" name="Maven: net.sf.ehcache:ehcache:1.2.3" />
+          <element id="library" level="project" name="Maven: asm:asm-attrs:1.5.3" />
+          <element id="library" level="project" name="Maven: antlr:antlr:2.7.6" />
+          <element id="library" level="project" name="Maven: cglib:cglib:2.1_3" />
+          <element id="library" level="project" name="Maven: asm:asm:1.5.3" />
+          <element id="library" level="project" name="Maven: javax.transaction:jta:1.1" />
+          <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
+          <element id="library" level="project" name="Maven: commons-beanutils:commons-beanutils:1.6" />
+          <element id="library" level="project" name="Maven: commons-dbcp:commons-dbcp:1.1" />
+          <element id="library" level="project" name="Maven: commons-pool:commons-pool:1.1" />
+          <element id="library" level="project" name="Maven: xml-apis:xml-apis:1.0.b2" />
+          <element id="library" level="project" name="Maven: xerces:xercesImpl:2.0.2" />
+          <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.4" />
+          <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.2.1" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:3.2.6.RELEASE" />
+          <element id="library" level="project" name="Maven: c3p0:c3p0:0.9.1.2" />
+          <element id="library" level="project" name="Maven: com.sinitek.managerframework:managerframework-core-common:1.0-SNAPSHOT" />
+          <element id="archive" name="managerdemo-demo-service-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="managerdemo-demo-service" />
+          </element>
+          <element id="library" level="project" name="Maven: com.sinitek.managerframework:managerframework-dict-action:1.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: com.sinitek.managerframework:managerframework-dict-common:1.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: org.directwebremoting:dwr:3.0.0-RELEASE" />
+          <element id="library" level="project" name="Maven: net.sf.json-lib:json-lib:jdk15:2.4" />
+          <element id="library" level="project" name="Maven: commons-lang:commons-lang:2.5" />
+          <element id="library" level="project" name="Maven: commons-logging:commons-logging:1.1.1" />
+          <element id="library" level="project" name="Maven: net.sf.ezmorph:ezmorph:1.0.6" />
+          <element id="library" level="project" name="Maven: org.json:json:20080701" />
+          <element id="library" level="project" name="Maven: org.apache.struts:struts2-core:2.3.15.1" />
+          <element id="library" level="project" name="Maven: org.apache.struts.xwork:xwork-core:2.3.15.1" />
+          <element id="library" level="project" name="Maven: asm:asm-commons:3.3" />
+          <element id="library" level="project" name="Maven: asm:asm-tree:3.3" />
+          <element id="library" level="project" name="Maven: org.freemarker:freemarker:2.3.19" />
+          <element id="library" level="project" name="Maven: ognl:ognl:3.0.6" />
+          <element id="library" level="project" name="Maven: javassist:javassist:3.11.0.GA" />
+          <element id="library" level="project" name="Maven: commons-io:commons-io:2.0.1" />
+          <element id="library" level="project" name="Maven: com.sinitek.spirit:Sinitek.Spirit.WebFramework:1.3.2" />
+          <element id="library" level="project" name="Maven: javolution:javolution:5.4.5" />
+          <element id="library" level="project" name="Maven: com.sinitek.spirit:sinitek-spirit-webcontrol:1.0-EC-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: net.sourceforge.jexcelapi:jxl:2.6" />
+          <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.5" />
+          <element id="library" level="project" name="Maven: com.sinitek.spirit:spirit-businlogger:1.0.0" />
+          <element id="library" level="project" name="Maven: org.apache.poi:poi:3.9" />
+          <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.5" />
+          <element id="library" level="project" name="Maven: org.apache.poi:poi-scratchpad:3.8" />
+          <element id="library" level="project" name="Maven: org.apache.poi:poi-ooxml:3.9" />
+          <element id="library" level="project" name="Maven: org.apache.poi:poi-ooxml-schemas:3.9" />
+          <element id="library" level="project" name="Maven: dom4j:dom4j:1.6.1" />
+          <element id="library" level="project" name="Maven: com.itextpdf:itextpdf:5.5.6" />
+          <element id="library" level="project" name="Maven: com.google.javascript:closure-compiler:r1459" />
+          <element id="library" level="project" name="Maven: args4j:args4j:2.0.12" />
+          <element id="library" level="project" name="Maven: com.google.guava:guava:r09" />
+          <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:2.4.1" />
+          <element id="library" level="project" name="Maven: org.apache.ant:ant:1.8.1" />
+          <element id="library" level="project" name="Maven: org.apache.ant:ant-launcher:1.8.1" />
+          <element id="library" level="project" name="Maven: com.google.code.findbugs:jsr305:1.3.9" />
+          <element id="library" level="project" name="Maven: com.googlecode.jarjar:jarjar:1.1" />
+          <element id="library" level="project" name="Maven: junit:junit:4.8.2" />
+          <element id="library" level="project" name="Maven: org.apache.pdfbox:pdfbox:1.8.10" />
+          <element id="library" level="project" name="Maven: org.apache.pdfbox:fontbox:1.8.10" />
+          <element id="library" level="project" name="Maven: org.apache.pdfbox:jempbox:1.8.10" />
+          <element id="library" level="project" name="Maven: jaxen:jaxen:1.1.6" />
+          <element id="library" level="project" name="Maven: com.sinitek:session:1.0.0" />
+          <element id="library" level="project" name="Maven: javax.mail:mail:1.5.0-b01" />
+          <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
+          <element id="library" level="project" name="Maven: opensymphony:quartz:1.6.3" />
+          <element id="library" level="project" name="Maven: org.apache.xmlbeans:xmlbeans:2.3.0" />
+          <element id="library" level="project" name="Maven: stax:stax-api:1.0.1" />
+          <element id="library" level="project" name="Maven: org.apache.axis:axis:1.4" />
+          <element id="library" level="project" name="Maven: javax.xml.rpc:javax.xml.rpc-api:1.1.1" />
+          <element id="library" level="project" name="Maven: cpdetector:cpdetector:1.0.10" />
+          <element id="library" level="project" name="Maven: com.mortennobel:java-image-scaling:0.8.6" />
+          <element id="library" level="project" name="Maven: com.jhlabs:filters:2.0.235" />
+          <element id="library" level="project" name="Maven: jwebsocket:jwebsocket_serverapi:1.0.0" />
+          <element id="library" level="project" name="Maven: jwebsocket:jwebsocket_common:1.0.0" />
+          <element id="library" level="project" name="Maven: jwebsocket:jwebsocket_server:1.0.0" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context:3.2.6.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aop:3.2.6.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-beans:3.2.6.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-core:3.2.6.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-expression:3.2.6.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context-support:3.2.6.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-web:3.2.6.RELEASE" />
+          <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
+          <element id="library" level="project" name="Maven: net.sourceforge.jchardet:jchardet:1.0" />
+          <element id="library" level="project" name="Maven: commons-fileupload:commons-fileupload:1.3.1" />
+          <element id="library" level="project" name="Maven: commons-discovery:commons-discovery:0.5" />
+          <element id="library" level="project" name="Maven: com.sinitek.spirit:spirit-logger:1.0.2" />
+          <element id="library" level="project" name="Maven: com.sinitek:util:1.0.0" />
+          <element id="library" level="project" name="Maven: com.sinitek.managerframework:managerframework-function-action:1.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: com.sinitek.managerframework:managerframework-menu-action:1.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: com.sinitek.managerframework:managerframework-setting-common:1.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: com.sinitek.managerframework:managerframework-menu-common:1.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: com.sinitek.managerframework:managerframework-entitysetting-common:1.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: com.sinitek.managerframework:managerframework-function-common:1.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: com.sinitek.managerframework:managerframework-org-action:1.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: com.sinitek.managerframework:managerframework-org-common:1.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: com.sinitek.managerframework:managerframework-attachment-common:1.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: com.sinitek.managerframework:managerframework-log-common:1.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: com.sinitek.managerframework:managerframework-security-action:1.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: com.sinitek.managerframework:managerframework-setting-action:1.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: com.sinitek.managerframework:managerframework-supportcenter-action:1.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: com.sinitek.managerframework:managerframework-supportcenter-common:1.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: com.sinitek.managerframework:managerframework-ui-action:1.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: com.sinitek.managerframework:managerframework-userui-common:1.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: com.sinitek.managerframework:managerframework-um-action:1.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: com.sinitek.managerframework:managerframework-um-common:1.0-SNAPSHOT" />
+          <element id="library" level="project" name="Maven: javax.servlet:servlet-api:2.5" />
+          <element id="library" level="project" name="Maven: com.sinitek.spirit:um-util:1.1.1" />
+          <element id="library" level="project" name="Maven: com.sinitek.spirit:um-session:1.1.1" />
+          <element id="library" level="project" name="Maven: org.apache.directory.api:api-all:1.0.0-M20" />
+          <element id="library" level="project" name="Maven: xpp3:xpp3:1.1.4c" />
+          <element id="library" level="project" name="Maven: org.apache.mina:mina-core:2.0.7" />
+          <element id="archive" name="managerdemo-sirmdemo-action-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="managerdemo-sirmdemo-action" />
+          </element>
+          <element id="archive" name="managerdemo-sirmdemo-common-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="managerdemo-sirmdemo-common" />
+          </element>
+          <element id="archive" name="managerdemo-sirmdemo-service-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="managerdemo-sirmdemo-service" />
+          </element>
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/manager/target/deploy-manager-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="deploy-manager/web/Web" />
+      <element id="artifact" artifact-name="managerdemo-demo-web:war exploded" />
+      <element id="artifact" artifact-name="managerdemo-sirmdemo-web:war exploded" />
+    </root>
+  </artifact>
+</component>

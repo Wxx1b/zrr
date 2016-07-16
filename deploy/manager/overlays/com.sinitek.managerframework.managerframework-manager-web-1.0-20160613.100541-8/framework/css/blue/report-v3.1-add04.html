@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>报告</title>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="X-UA-Compatible" content="IE=IE8" >
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="X-UA-Compatible" content="IE=IE8" >
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../js/jquery-ui.js"></script>
+<script type="text/javascript" src="../../js/jquery-plugin.js"></script>
+<script type="text/javascript" src="../../js/stk-core.js"></script>
+<script type="text/javascript" src="../../js/stk-tools.js"></script>
+<script type="text/javascript" src="../../js/stk-api.js"></script>
+<!¨C[if IE]>
+<script type="text/javascript" src="../../js/html5.js"></script>
+<![endif]¨C>
+<link type="text/css" href="jquery-ui.css" rel="stylesheet" />
+<link type="text/css" href="jquery-plugin.css" rel="stylesheet" />
+<link type="text/css" href="stk.css" rel="stylesheet" />
+<script type="text/javascript">
+(function($){
+	$.extend($.fn,{
+		tipExtra : function(setting){
+			var opt = $.extend({
+				html : 'ddd',
+				width : 'auto'
+			});
+			var tip = $('<div/>').css({
+					"position" : "absolute",
+					"width" : opt.width,
+					"z-index" : 10000,
+					"display" : "none",
+					"border" : "1px solid #bfbfbf"
+				}).append(opt.html);
+			var _wh = $.offHeight();
+			var bg = $('<div style="position:absolute;top:0;left:0;width:100%;height:'+_wh+'px;z-index:9999;background-color:transparent"></div>').click(function(){
+					tip.remove();
+					$(this).remove();
+				});
+			$(this).click(function(){
+				tip.appendTo('body').show();
+				bg.appendTo('body').show();
+			})
+			
+			
+			
+		}
+	});
+})(jQuery)
+</script>
+</head>
+
+<body>
+<div class="panel-add04">
+<h2 class="ad004-head mb5"><span>发表评论</span><a class="return ml10" href="#">&lt;&lt;返回</a></h2>
+<div class="ad004-opt">
+<button class="stk-button stk-button-st-3">发表评论</button>&nbsp;&nbsp;<button class="stk-button stk-button-st-3">取消</button>
+</div>
+<div>
+<table class="add04-table">
+ <tr>
+     <th><label>标题：</label></th>
+     <td><input type="text" class="stk-input" /></td>
+ </tr>
+ <tr>
+     <th><label>内容：</label></th>
+     <td><textarea class="stk-textarea"></textarea></td>
+ </tr>
+</table>
+</div>
+<div class="ad004-opt1 pt5">
+<button class="stk-button stk-button-st-3">发表评论</button>&nbsp;&nbsp;<button class="stk-button stk-button-st-3">取消</button>
+</div>
+</div>
+</body>
+</html>

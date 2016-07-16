@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.sinitek.managerframework:managerframework-ui-action:1.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/sinitek/managerframework/managerframework-ui-action/1.0-SNAPSHOT/managerframework-ui-action-1.0-20160613.100513-7.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/sinitek/managerframework/managerframework-ui-action/1.0-SNAPSHOT/managerframework-ui-action-1.0-20160613.100513-7-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/sinitek/managerframework/managerframework-ui-action/1.0-SNAPSHOT/managerframework-ui-action-1.0-20160613.100513-7-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,186 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.sinitek.deploy</groupId>
+        <artifactId>deploy</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>deploy-manager</artifactId>
+
+    <packaging>war</packaging>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>taglibs</groupId>
+            <artifactId>standard</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>oracle.jdbc.OracleDriver</groupId>
+            <artifactId>ojdbc</artifactId>
+            <version>14</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>2.3.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.18</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sinitek.managerdemo</groupId>
+            <artifactId>managerdemo-demo-web</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>com.sinitek.managerdemo</groupId>
+            <artifactId>managerdemo-demo-action</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sinitek.managerdemo</groupId>
+            <artifactId>managerdemo-demo-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sinitek.managerdemo</groupId>
+            <artifactId>managerdemo-demo-service</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sinitek.managerframework</groupId>
+            <artifactId>managerframework-manager-web</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>com.sinitek.managerframework</groupId>
+            <artifactId>managerframework-dict-action</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sinitek.managerframework</groupId>
+            <artifactId>managerframework-function-action</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sinitek.managerframework</groupId>
+            <artifactId>managerframework-menu-action</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sinitek.managerframework</groupId>
+            <artifactId>managerframework-org-action</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sinitek.managerframework</groupId>
+            <artifactId>managerframework-security-action</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sinitek.managerframework</groupId>
+            <artifactId>managerframework-setting-action</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sinitek.managerframework</groupId>
+            <artifactId>managerframework-supportcenter-action</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sinitek.managerframework</groupId>
+            <artifactId>managerframework-ui-action</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sinitek.managerframework</groupId>
+            <artifactId>managerframework-um-action</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <!-- sirmdemo -->
+        <dependency>
+            <groupId>com.sinitek.managerdemo</groupId>
+            <artifactId>managerdemo-sirmdemo-web</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>com.sinitek.managerdemo</groupId>
+            <artifactId>managerdemo-sirmdemo-action</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sinitek.managerdemo</groupId>
+            <artifactId>managerdemo-sirmdemo-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sinitek.managerdemo</groupId>
+            <artifactId>managerdemo-sirmdemo-service</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+
+    </dependencies>
+    <repositories>
+
+        <repository>
+            <id>public</id>
+            <url>http://maven.sinitek-corp.com/content/groups/public/</url>
+            <!--<url>http://localhost:8081/nexus/content/groups/public/</url>-->
+        </repository>
+        <repository>
+            <id>snapshots</id>
+            <url>http://maven.sinitek-corp.com/content/repositories/snapshots/</url>
+        </repository>
+
+    </repositories>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.basedir}/../../../../build/sfm.ds.manager</outputDirectory>
+                            <excludeTransitive>false</excludeTransitive>
+                            <stripVersion>false</stripVersion>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,252 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>报告</title>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="X-UA-Compatible" content="IE=IE8" >
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="X-UA-Compatible" content="IE=IE8" >
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../js/jquery-ui.js"></script>
+<script type="text/javascript" src="../../js/jquery-plugin.js"></script>
+<script type="text/javascript" src="../../js/stk-core.js"></script>
+<script type="text/javascript" src="../../js/stk-tools.js"></script>
+<script type="text/javascript" src="../../js/stk-api.js"></script>
+<!¨C[if IE]>
+<script type="text/javascript" src="../../js/html5.js"></script>
+<![endif]¨C>
+<link type="text/css" href="jquery-ui.css" rel="stylesheet" />
+<link type="text/css" href="jquery-plugin.css" rel="stylesheet" />
+<link type="text/css" href="stk.css" rel="stylesheet" />
+</head>
+
+<body>
+<div style="padding:10px">
+<div class="ad-search">
+	<div class="range-search">
+    	<ul>
+        	<li>
+            	<span>搜索范围：</span>
+                <label><input name="" type="radio" value="">直属客户</label><label><input name="" type="radio" value="">所辖客户</label><label><input name="" type="radio" value="">全部</label>
+            </li>
+            <li class="button"><button class="stk-button stk-button-st-3"><span>立即查询</span></button></li>
+        </ul>
+    </div>
+	<div class="cate-nav">
+		<div class="btn-fold"><a href="#"><span>收起筛选项</span></a></div><div class="btn-unfold"><a href="#"><span>展开筛选项</span></a></div>
+        <dl>
+            <dt>省份：</dt>
+            <dd>
+                <ul>
+                    <li class="selected"><a href="#">不限</a></li><li><a href="#">北京</a></li><li><a href="#">上海</a></li><li><a href="#">广东</a></li><li><a href="#">福建</a></li><li><a href="#">甘肃</a></li><li><a href="#">重庆</a></li><li><a href="#">广西</a></li><li><a href="#">贵州</a></li><li><a href="#">海南</a></li><li><a href="#">河北</a></li><li><a href="#">黑龙江</a></li><li><a href="#">河南</a></li><li><a href="#">香港</a></li><li><a href="#">湖北</a></li><li><a href="#">湖南</a></li><li><a href="#">江苏</a></li><li><a href="#">江西</a></li><li><a href="#">吉林</a></li><li><a href="#">辽宁</a></li><li><a href="#">澳门</a></li><li><a href="#">内蒙古</a></li><li><a href="#">宁夏</a></li><li><a href="#">青海</a></li><li><a href="#">山东</a></li><li><a href="#">安徽</a></li><li><a href="#">山西</a></li><li><a href="#">陕西</a></li><li><a href="#">四川</a></li><li><a href="#">台湾</a></li><li><a href="#">天津</a></li><li><a href="#">新疆</a></li><li><a href="#">西藏</a></li><li><a href="#">云南</a></li><li><a href="#">浙江</a></li><li><a href="#">海外</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl>
+            <dt>客户类别：</dt>
+            <dd>
+                <ul>
+                    <li><a href="#">不限</a></li><li class="selected"><a href="#">基金</a></li><li><a href="#">证券</a></li><li><a href="#">保险</a></li><li><a href="#">投资公司</a></li><li><a href="#">财务公司</a></li><li><a href="#">QFII</a></li><li><a href="#">个人客户</a></li><li><a href="#">期货</a></li><li><a href="#">信托</a></li><li><a href="#">银行</a></li><li><a href="#">会计事务所</a></li><li><a href="#">上市公司</a></li><li><a href="#">政府部门</a></li><li><a href="#">高校</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl>
+            <dt>客户归属：</dt>
+            <dd>
+                <ul>
+                    <li><a href="#">不限</a></li><li class="selected"><a href="#">公司集团</a></li><li><a href="#">期货部</a></li><li><a href="#">证券部</a></li><li><a href="#">研究所</a></li><li><a href="#">投资管理部</a></li><li><a href="#">投资银行</a></li><li><a href="#">直投部</a></li><li><a href="#">零售经济</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl>
+            <dt>客户等级：</dt>
+            <dd>
+                <ul>
+                    <li><a href="#">不限</a></li><li><a href="#">1颗星</a></li><li><a href="#" class="selected">2颗星</a></li><li><a href="#">3颗星</a></li><li><a href="#">4颗星</a></li><li><a href="#">5颗星</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl>
+            <dt>负责业务：</dt>
+            <dd>
+                <ul>
+                    <li><a href="#">不限</a></li><li class="selected"><a href="#">管理</a></li><li><a href="#">投资</a></li><li><a href="#">研究</a></li><li><a href="#">其他</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl>
+            <dt>业务进度：</dt>
+            <dd>
+                <ul>
+                    <li><a href="#">不限</a></li><li class="selected"><a href="#">签约客户</a></li><li><a href="#">拟签约客户</a></li><li><a href="#">潜在客户</a></li><li><a href="#">备查资料</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl>
+            <dt>所属行业：</dt>
+            <dd>
+                <ul>
+                    <li><a href="#">不限</a></li><li><a href="#">综合类行业</a></li><li class="selected"><a href="#">能源行业</a></li><li><a href="#">原材料行业</a></li><li><a href="#">投资品行业</a></li><li><a href="#">交通运输行业</a></li><li><a href="#">商业贸易行业</a></li><li><a href="#">选择消费行业</a></li><li><a href="#">主要消费行业</a></li><li><a href="#">健康护理行业</a></li><li><a href="#">金融业行业</a></li><li><a href="#">房地产行业</a></li><li><a href="#">信息技术行业</a></li><li><a href="#">电信服务行业</a></li><li><a href="#">公用事业行业</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl>
+            <dt>投资属性：</dt>
+            <dd>
+                <ul>
+                    <li><a href="#">不限</a></li><li class="selected"><a href="#">专职</a></li><li><a href="#">兼职</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl>
+            <dt>投资周期：</dt>
+            <dd>
+                <ul>
+                    <li><a href="#">不限</a></li><li class="selected"><a href="#">1个月以下</a></li><li><a href="#">1个月~3个月</a></li><li><a href="#">3个月~6个月</a></li><li><a href="#">6个月~12个月</a></li><li><a href="#">12个月以上</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl>
+            <dt>管理资产规模：</dt>
+            <dd>
+                <ul>
+                    <li><a href="#">不限</a></li><li><a href="#">1000万~1亿</a></li><li><a href="#">1亿~10亿</a></li><li class="selected"><a href="#">10亿到10~亿</a></li><li><a href="#">100亿~500亿</a></li><li><a href="#">500亿以上</a></li>
+                </ul>
+            </dd>
+        </dl>
+        <dl>
+            <dt>风险偏好：</dt>
+            <dd>
+                <ul>
+                    <li class="selected"><a href="#">不限</a></li><li><a href="#">保守</a></li><li><a href="#">稳健</a></li><li><a href="#">激进</a></li>
+                </ul>
+            </dd>
+        </dl>
+    </div>
+    <div class="filter-term">
+        <ul>
+            <li class="single-sel">
+            	<span>资金需求：</span>
+                <label><input name="" type="radio" value="">是</label><label><input name="" type="radio" value="">否</label>
+            </li>
+            <li class="single-sel">
+            	<span>资金提供：</span>
+                <label><input name="" type="radio" value="">是</label><label><input name="" type="radio" value="">否</label>
+            </li>
+        </ul>
+        <ul class="keywords-search">
+        	<li>
+            	<span>客户名称：</span>
+                <input name="" type="text"><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+            </li>
+        	<li>
+            	<span>手机/电话：</span>
+                <input name="" type="text">
+            </li>
+        	<li>
+            	<span>证券代码：</span>
+                <input name="" type="text">
+            </li>
+        	<li>
+            	<span>研究的行业：</span>
+                <input name="" type="text">
+            </li>
+        </ul>
+     </div>
+	<div class="range-search">
+    	<ul>
+            <li class="button"><button class="stk-button stk-button-st-3"><span>立即查询</span></button></li>
+        </ul>
+    </div>
+</div>
+<div class="search-params-bar">
+<div class="search-option-bar" style="margin-bottom:10px">
+<button class="stk-button stk-button-st-3 stk-button-st-select-3"><span>明细</span></button><button class="stk-button stk-button-st-3"><span>导出</span></button><button class="stk-button stk-button-st-3"><span>删除</span></button><button class="stk-button stk-button-st-3"><span>新建</span></button><button class="stk-button stk-button-st-3"><span>调整</span></button>
+</div>
+<div style="clear:both; margin-bottom:10px;">
+
+<table class="stk-table" width="100%">
+<thead>
+<tr>
+	<th class="stk-table-th">名称</th>
+    <th class="stk-table-th">类型</th>
+    <th class="stk-table-th">时间&nbsp;&nbsp;<b class="stk-ui-sort-asc"></b></th>
+    <th class="stk-table-th">金额</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td class="stk-table-td">调查研究报告</td>
+    <td class="stk-table-td">&nbsp;</td>
+    <td class="stk-table-td">&nbsp;</td>
+    <td class="stk-table-td">&nbsp;</td>
+</tr>
+<tr class="stk-table-tr-even">
+	<td class="stk-table-td">调查研究报告</td>
+    <td class="stk-table-td">&nbsp;</td>
+    <td class="stk-table-td">&nbsp;</td>
+    <td class="stk-table-td">&nbsp;</td>
+</tr>
+<tr>
+	<td class="stk-table-td">调查研究报告</td>
+    <td class="stk-table-td">&nbsp;</td>
+    <td class="stk-table-td">&nbsp;</td>
+    <td class="stk-table-td">&nbsp;</td>
+</tr>
+<tr class="stk-table-tr-even">
+	<td class="stk-table-td">调查研究报告</td>
+    <td class="stk-table-td">&nbsp;</td>
+    <td class="stk-table-td">&nbsp;</td>
+    <td class="stk-table-td">&nbsp;</td>
+</tr>
+<tr>
+	<td class="stk-table-td">调查研究报告</td>
+    <td class="stk-table-td">&nbsp;</td>
+    <td class="stk-table-td">&nbsp;</td>
+    <td class="stk-table-td">&nbsp;</td>
+</tr>
+<tr class="stk-table-tr-even">
+	<td class="stk-table-td">调查研究报告</td>
+    <td class="stk-table-td">&nbsp;</td>
+    <td class="stk-table-td">&nbsp;</td>
+    <td class="stk-table-td">&nbsp;</td>
+</tr>
+<tr>
+	<td class="stk-table-td">调查研究报告</td>
+    <td class="stk-table-td">&nbsp;</td>
+    <td class="stk-table-td">&nbsp;</td>
+    <td class="stk-table-td">&nbsp;</td>
+</tr>
+<tr class="stk-table-tr-even">
+	<td class="stk-table-td">调查研究报告</td>
+    <td class="stk-table-td">&nbsp;</td>
+    <td class="stk-table-td">&nbsp;</td>
+    <td class="stk-table-td">&nbsp;</td>
+</tr>
+<tr>
+	<td class="stk-table-td">调查研究报告</td>
+    <td class="stk-table-td">&nbsp;</td>
+    <td class="stk-table-td">&nbsp;</td>
+    <td class="stk-table-td">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<div class="stk-page-bar">
+    <div class="stk-fl">共11个记录&nbsp;&nbsp;<a href="#" class="stk-page-num p-select">10</a><a href="#" class="stk-page-num">20</a></div>
+    <div class="stk-fr"><a href="javascript:void(0)" class="stk-page-num">&lt;&lt;</a><a href="javascript:void(0)" class="stk-page-num">1</a><a href="javascript:void(0)" class="stk-page-num">2</a><a href="javascript:void(0)" class="stk-page-num">3</a><a href="javascript:void(0)" class="stk-page-num">4</a><a href="javascript:void(0)" class="stk-page-num">5</a><a href="javascript:void(0)" class="stk-page-num">6</a><a href="javascript:void(0)" class="stk-page-num">&gt;&gt;</a>
+    <a href="javascript:void(0)" class="stk-page-num p-hover">首页</a><a href="javascript:void(0)" class="stk-page-num p-hover">上一页</a><a href="javascript:void(0)" class="stk-page-num p-hover p-valid">下一页</a><a href="javascript:void(0)" class="stk-page-num p-hover p-valid">尾页</a>
+    </div>
+</div>
+</div>
+<div class="search-option-bar" style="margin-bottom:10px">
+<button class="stk-button stk-button-st-3"><span>明细</span></button><button class="stk-button stk-button-st-3"><span>导出</span></button><button class="stk-button stk-button-st-3"><span>删除</span></button><button class="stk-button stk-button-st-3"><span>新建</span></button><button class="stk-button stk-button-st-3"><span>调整</span></button>
+</div>
+</div>
+
+
+</div>
+</body>
+</html>

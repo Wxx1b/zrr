@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+        "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+<taglib>
+    <tlib-version>0.0.1</tlib-version>
+    <jsp-version>1.2</jsp-version>
+    <short-name>stk-tools</short-name>
+    <uri>http://www.sinitek.com/sirm/framework/tag</uri>
+    <display-name>"Sinitek Framework Tags"</display-name>
+    <description>框架标签</description>
+
+    <tag>
+        <name>loadlogonpageinfo</name>
+        <tag-class>com.sinitek.managerframework.um.tag.LoadLogonPageInfoTag</tag-class>
+        <body-content>JSP</body-content>
+        <description>获取登录页面信息</description>
+        <attribute>
+            <name>var</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>存放信息的变量名称</description>
+        </attribute>
+    </tag>
+
+
+    <tag>
+        <name>loadmenutag</name>
+        <tag-class>com.sinitek.managerframework.menu.tag.LoadMenuTag</tag-class>
+        <body-content>JSP</body-content>
+        <description>加载菜单</description>
+        <attribute>
+            <name>menuName</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>存放菜单的名称</description>
+        </attribute>
+    </tag>
+</taglib>

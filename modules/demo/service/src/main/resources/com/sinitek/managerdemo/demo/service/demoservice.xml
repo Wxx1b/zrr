@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE serviceConfig PUBLIC "-//SINITEK//SERVICE//SERVICECORECONFIG//1_0"
+        "http://www.sinitek.com/dtd/servicecoreconfig_1_0.dtd" >
+<serviceConfig>
+
+    <service functionCode="DEMO_SAVE_INFO" functionName="保存信息">
+        <className>com.sinitek.managerdemo.demo.service.handler.DemoSaveInfoServiceHandler</className>
+        <serviceParam>
+            <string name="name" comment="姓名" isNotNull="true"></string>
+            <integer name="age" comment="年龄" isNotNull="true"></integer>
+            <double name="income" comment="收入" isNotNull="true"></double>
+            <enum name="gender" enumName="com.sinitek.managerdemo.demo.common.enums.GenderEnums" comment="性别"
+                  info="1：男 0：女" isNotNull="true"></enum>
+        </serviceParam>
+        <serviceResponse>
+            <string name="name" comment="姓名" isNotNull="true"></string>
+            <integer name="objid" comment="编号" isNotNull="true"></integer>
+        </serviceResponse>
+    </service>
+    <service functionCode="DEMO_SAVE_INFO_EXCEPTION" functionName="保存信息必抛异常">
+        <className>com.sinitek.managerdemo.demo.service.handler.DemoSaveInfoAlwaysExceptionServiceHandler</className>
+        <serviceParam>
+            <string name="name" comment="姓名" isNotNull="true"></string>
+            <integer name="age" comment="年龄" isNotNull="true"></integer>
+            <double name="income" comment="收入" isNotNull="true"></double>
+            <enum name="gender" enumName="com.sinitek.managerdemo.demo.common.enums.GenderEnums" comment="性别"
+                  info="1：男 0：女" isNotNull="true"></enum>
+        </serviceParam>
+        <serviceResponse>
+            <string name="name" comment="姓名" isNotNull="true"></string>
+            <integer name="objid" comment="编号" isNotNull="true"></integer>
+        </serviceResponse>
+    </service>
+
+    <service functionCode="DEMO_BATCH_SAVE_INFO" functionName="批量保存信息">
+        <className>com.sinitek.managerdemo.demo.service.handler.DemoBatchSaveInfoServiceHandler</className>
+        <serviceParam>
+            <dataList>
+                <string name="name" comment="姓名" isNotNull="true"></string>
+                <integer name="age" comment="年龄" isNotNull="true"></integer>
+                <double name="income" comment="收入" isNotNull="true"></double>
+                <string name="gender" comment="性别" info="1：男 0：女" isNotNull="true"></string>
+            </dataList>
+        </serviceParam>
+        <serviceResponse>
+            <integer name="count" comment="数据数量" isNotNull="true"></integer>
+            <dataList>
+                <string name="name" comment="姓名" isNotNull="true"></string>
+                <integer name="objid" comment="编号" isNotNull="true"></integer>
+            </dataList>
+        </serviceResponse>
+    </service>
+
+    <service functionCode="DEMO_QUERY_INFO" functionName="查询信息">
+        <className>com.sinitek.managerdemo.demo.service.handler.DemoQueryInfoServiceHandler</className>
+        <serviceParam>
+            <string name="objid" comment="编号" isNotNull="false"></string>
+            <string name="name" comment="姓名" isNotNull="false"></string>
+        </serviceParam>
+        <serviceResponse>
+            <integer name="count" comment="数据数量" isNotNull="true"></integer>
+            <dataList>
+                <integer name="objid" comment="编号" isNotNull="true"></integer>
+                <string name="name" comment="姓名" isNotNull="true"></string>
+                <integer name="age" comment="年龄" isNotNull="true"></integer>
+                <double name="income" comment="收入" isNotNull="true"></double>
+                <string name="gender" comment="性别" info="1：男 0：女" isNotNull="true"></string>
+            </dataList>
+        </serviceResponse>
+    </service>
+</serviceConfig>

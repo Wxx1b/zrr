@@ -1,0 +1,219 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>管理界面</title>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="X-UA-Compatible" content="IE=IE8" >
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="X-UA-Compatible" content="IE=IE8" >
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../js/jquery-ui.js"></script>
+<script type="text/javascript" src="../../js/jquery-plugin.js"></script>
+<script type="text/javascript" src="../../js/stk-core.js"></script>
+<script type="text/javascript" src="../../js/stk-tools.js"></script>
+<script type="text/javascript" src="../../js/stk-api.js"></script>
+<!¨C[if IE]>
+<script type="text/javascript" src="../../js/html5.js"></script>
+<![endif]¨C>
+<link type="text/css" href="jquery-ui.css" rel="stylesheet" />
+<link type="text/css" href="jquery-plugin.css" rel="stylesheet" />
+<link type="text/css" href="stk.css" rel="stylesheet" />
+<script type="text/javascript">
+$(function(){
+	$('#tabs').stktabs();
+	$('#tabs').bind('tabsselect',function(event,id,title){
+		alert(id + '*' + title);
+		});
+	$('#tabs1').stktabs()
+});
+
+</script>
+</head>
+
+<body>
+<script>
+function moveUp(t,e){
+	var _tli = $(t).closest('li');
+	if(_tli.prev('li')){
+		_tli.prev('li').before(_tli);
+	}
+	$.stopBubble(e);
+}
+function moveDown(t,e){
+	var _tli = $(t).closest('li');
+	if(_tli.next('li')){
+		_tli.next('li').after(_tli);
+	}
+	$.stopBubble(e);
+}
+$(function(){
+	if($.browser.msie && $.browser.version == '6.0'){
+		$('.menu-list li').hover(function(){
+			$(this).addClass('hover');
+		},function(){
+			$(this).removeClass('hover');
+		})
+	}
+	$('.menu-list li').click(function(){
+		$('.menu-list .selected').removeClass('selected');
+		$(this).addClass('selected');
+	})
+})
+</script>
+<div>
+<!-- 开始 -->
+
+<div class="prem-bar">
+<table class="w100p">
+<tr>
+<td width="250">
+<button class="stk-button stk-button-st-3 mr10"><span>新增</span></button>
+<button class="stk-button stk-button-st-3 mr10"><span>删除</span></button>
+<button class="stk-button stk-button-st-3 mr10"><span>#设置权限</span></button></td>
+<td width="auto">
+当前位置：<a href="#">根节点</a>  &gt;&gt;  <a href="#">内部研究报告</a>  &gt;&gt;  <a href="#"><b class="icon-st23 mr5"></b>经济研究</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="prem-box">
+<table class="w100p">
+<tr>
+<td width="250">
+<div class="prem-menu" id="J_optleftmenu">
+<ul>
+<li class="menu-item">
+	<div class="menu-t1"><!--<b class="icon-st26 mr5"></b>--><b class="icon-st24 mr5"></b>报告栏目一<span class="opt-bar"><b class="icon-st16" onClick="moveUp(this,event);"></b><b class="icon-st17" onClick="moveDown(this,event);"></b><b class="icon-st15"></b></span></div>
+    <ul class="menu-list">
+    <li><span><b class="icon-st25 mr5"></b>栏目1.1</span><span class="opt-bar"><b class="icon-st16" onClick="moveUp(this,event);"></b><b class="icon-st17" onClick="moveDown(this,event);"></b><b class="icon-st15"></b></span></li>
+    <li><span><b class="icon-st25 mr5"></b>栏目1.2</span><span class="opt-bar"><b class="icon-st16" onClick="moveUp(this,event);"></b><b class="icon-st17" onClick="moveDown(this,event);"></b><b class="icon-st15"></b></span></li>
+    <li><span><b class="icon-st25 mr5"></b>栏目1.3</span><span class="opt-bar"><b class="icon-st16" onClick="moveUp(this,event);"></b><b class="icon-st17" onClick="moveDown(this,event);"></b><b class="icon-st15"></b></span></li>
+    </ul>
+</li>
+<li>
+    <div class="menu-t1"><b class="icon-st24 mr5"></b>报告栏目二<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></div>
+    <ul class="menu-list">
+    <li><b class="icon-st25 mr5"></b>栏目1.1<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></li>
+    <li><b class="icon-st25 mr5"></b>栏目1.2<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></li>
+    <li><b class="icon-st25 mr5"></b>栏目1.3<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></li>
+    </ul>
+</li>
+<li>
+    <div class="menu-t1"><b class="icon-st24 mr5"></b>报告栏目三<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></div>
+    <ul class="menu-list">
+    <li><b class="icon-st25 mr5"></b>栏目1.1<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></li>
+    <li><b class="icon-st25 mr5"></b>栏目1.2<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></li>
+    <li><b class="icon-st25 mr5"></b>栏目1.3<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></li>
+    </ul>
+</li>
+<li>
+    <div class="menu-t1"><b class="icon-st24 mr5"></b>报告栏目三<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></div>
+    <ul class="menu-list">
+    <li><b class="icon-st25 mr5"></b>栏目1.1<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></li>
+    <li><b class="icon-st25 mr5"></b>栏目1.2<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></li>
+    <li><b class="icon-st25 mr5"></b>栏目1.3<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></li>
+    </ul>
+</li>
+<li>
+    <div class="menu-t1"><b class="icon-st24 mr5"></b>报告栏目三<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></div>
+    <ul class="menu-list">
+    <li><b class="icon-st25 mr5"></b>栏目1.1<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></li>
+    <li><b class="icon-st25 mr5"></b>栏目1.2<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></li>
+    <li><b class="icon-st25 mr5"></b>栏目1.3<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></li>
+    </ul>
+</li>
+<li>
+    <div class="menu-t1"><b class="icon-st24 mr5"></b>报告栏目三<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></div>
+    <ul class="menu-list">
+    <li><b class="icon-st25 mr5"></b>栏目1.1<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></li>
+    <li><b class="icon-st25 mr5"></b>栏目1.2<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></li>
+    <li><b class="icon-st25 mr5"></b>栏目1.3<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></li>
+    </ul>
+</li><li>
+    <div class="menu-t1"><b class="icon-st24 mr5"></b>报告栏目三<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></div>
+    <ul class="menu-list">
+    <li><b class="icon-st25 mr5"></b>栏目1.1<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></li>
+    <li><b class="icon-st25 mr5"></b>栏目1.2<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></li>
+    <li><b class="icon-st25 mr5"></b>栏目1.3<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></li>
+    </ul>
+</li>
+<li>
+    <div class="menu-t1"><b class="icon-st24 mr5"></b>报告栏目三<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></div>
+    <ul class="menu-list">
+    <li><b class="icon-st25 mr5"></b>栏目1.1<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></li>
+    <li><b class="icon-st25 mr5"></b>栏目1.2<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></li>
+    <li><b class="icon-st25 mr5"></b>栏目1.3<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></li>
+    </ul>
+</li>
+<li>
+    <div class="menu-t1"><b class="icon-st24 mr5"></b>报告栏目三<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></div>
+    <ul class="menu-list">
+    <li><b class="icon-st25 mr5"></b>栏目1.1<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></li>
+    <li><b class="icon-st25 mr5"></b>栏目1.2<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></li>
+    <li><b class="icon-st25 mr5"></b>栏目1.3<span class="opt-bar"><b class="icon-st16"></b><b class="icon-st17"></b><b class="icon-st15"></b></span></li>
+    </ul>
+</li>
+</ul>
+</div></td>
+<td width="5" class="split-bar frbar-st1"></td>
+<td width="auto" valign="top">
+<div class="prem-sec-box">
+<div class="title-bar"><span class="tit">设置权限</span><a href="#">&lt;&lt;返回</a></div>
+<div class="opt-bar"><span class="mr10"><b class="icon-st18 mr5"></b><a href="#">授权</a></span><span><b class="icon-st19 mr5"></b><a href="#">保存</a></span></div>
+<div class="conlist">
+<table class="stk-table stk-table-st2" width="100%">
+<thead>
+<tr>
+<th class="stk-table-th">组织结构</th>
+<th class="stk-table-th"><input type="checkbox">查看</th>
+<th class="stk-table-th"><input type="checkbox">撰写</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b class="icon-st20 mr5"></b>部门</td>
+<td><input type="checkbox"></td>
+<td><input type="checkbox"></td>
+</tr>
+<tr class="stk-table-tr-even">
+<td><b class="icon-st21 mr5"></b>岗位</td>
+<td><input type="checkbox"></td>
+<td><input type="checkbox"></td>
+</tr>
+<tr>
+<td><b class="icon-st22 mr5"></b>小组</td>
+<td><input type="checkbox"></td>
+<td><input type="checkbox"></td>
+</tr>
+<tr class="stk-table-tr-even">
+<td><b class="icon-st2 mr5"></b>员工</td>
+<td><input type="checkbox"></td>
+<td><input type="checkbox"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<!-- 结束 -->
+</div>
+<script>
+$(function(){
+	var _wh = $.offHeight();
+	var _m = $('#J_optleftmenu');
+	var _h = _m.height();
+	_h = (_h+45)>_wh ? _wh : _h;
+	if((_h+45)>_wh){
+		_m.css({"height" : (_wh-45)+"px","overflow" : "auto","position":"relative"})
+	}
+	
+})
+</script>
+</body>
+</html>

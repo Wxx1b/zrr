@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.sinitek.spirit:sinitek-spirit-webcontrol:1.0-EC-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/sinitek/spirit/sinitek-spirit-webcontrol/1.0-EC-SNAPSHOT/sinitek-spirit-webcontrol-1.0-EC-20160509.065758-8.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/sinitek/spirit/sinitek-spirit-webcontrol/1.0-EC-SNAPSHOT/sinitek-spirit-webcontrol-1.0-EC-20160509.065758-8-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/sinitek/spirit/sinitek-spirit-webcontrol/1.0-EC-SNAPSHOT/sinitek-spirit-webcontrol-1.0-EC-20160509.065758-8-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

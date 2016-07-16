@@ -1,0 +1,194 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>报告</title>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="X-UA-Compatible" content="IE=IE8" >
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="X-UA-Compatible" content="IE=IE8" >
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../js/jquery-ui.js"></script>
+<script type="text/javascript" src="../../js/jquery-plugin.js"></script>
+<script type="text/javascript" src="../../js/stk-core.js"></script>
+<script type="text/javascript" src="../../js/stk-tools.js"></script>
+<script type="text/javascript" src="../../js/stk-api.js"></script>
+<!¨C[if IE]>
+<script type="text/javascript" src="../../js/html5.js"></script>
+<![endif]¨C>
+<link type="text/css" href="jquery-ui.css" rel="stylesheet" />
+<link type="text/css" href="jquery-plugin.css" rel="stylesheet" />
+<link type="text/css" href="stk.css" rel="stylesheet" />
+</head>
+
+<body >
+<div class="report-in-all panel-add04">
+<h2 class="ad004-head mb5"><span>发表评论</span><a class="return ml10" href="#">&lt;&lt;返回</a></h2>
+
+    <div>
+    	<table class="stk-form-ui-st1">
+        <tr>
+            <td class="hd" width="110"><label>标题<em>*</em></label></td>
+            <td class="bd" width="auto"><input class="stk-input w630" type="text"></td>
+        </tr>
+        <tr>
+            <td class="hd"><label>副标题<em>*</em></label></td>
+            <td class="bd"><input class="stk-input w630" type="text"></td>
+        </tr>
+        <tr>
+            <td class="hd"><label>报告作者<em>*</em></label></td>
+            <td class="bd">
+            <div><input class="stk-input w210" type="text"><span class="asi-note">(实际参与报告撰写工作)</span></div>
+            <div style="display:block">
+            <div class="stk-person-select" style="width:">
+            <span class="stk-child-o"><span>李刚，权重<input class="stk-input w20 ml5 mr5" type="text">%，顺序<input class="stk-input w20 ml5 mr5" type="text"></span><b class="stk-button-icon stk-child-close"></b></span>
+            <span class="stk-child-o"><span>李刚，权重<input class="stk-input w20 ml5 mr5" type="text">%，顺序<input class="stk-input w20 ml5 mr5" type="text"></span><b class="stk-button-icon stk-child-close"></b></span>
+            <span class="stk-child-o"><span>李刚，权重<input class="stk-input w20 ml5 mr5" type="text">%，顺序<input class="stk-input w20 ml5 mr5" type="text"></span><b class="stk-button-icon stk-child-close"></b></span>
+            </div>
+            </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="hd"><label>报告署名作者<em>*</em></label></td>
+            <td class="bd">
+            <input class="stk-input w210" type="text"><span class="asi-note">(具有证券投资咨询业务资格)</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="hd"><label>报告摘要</label></td>
+            <td class="bd"><textarea class="stk-textarea w630 h80"></textarea></td>
+        </tr>
+         <tr>
+            <td class="hd"><label>短信摘要</label></td>
+            <td class="bd"><textarea class="stk-textarea w630 h80"></textarea></td>
+        </tr>
+        <tr>
+        	<td colspan="2">
+            <table class="w100p">
+            	<tr>
+                	<td class="hd" width="110"><label>文档密级<em>*</em></label></td>
+                    <td class="bd" width="200"><select><option>无</option></select></td>
+                    <td class="hd" width="110"><label>文档重要程度<em>*</em></label></td>
+                    <td class="bd">
+                    <div>
+                    <div id="J_starts" class="stk-starts-ui fl">
+                    </div><div id="J_startShow" style="float:left"></div>
+                    </div>
+                    <script>
+                    (function($){
+						$.extend($.fn,{
+							startsScore : function(setting){
+								var opt = $.extend({
+									name : 'starts',
+									curStarts : 3,
+									maxStarts : 5,
+									titles : ['很差','差','中','好','很好'],
+									showTarget : $('#J_startShow')
+								},setting);
+								if(typeof opt.maxStarts != 'number' || opt.maxStarts <=0){
+									return;
+								}
+								if(typeof opt.curStarts != 'number' || opt.start > opt.maxStarts){
+									opt.curStarts = opt.maxStarts;
+								}
+								var _input = $('<input type="hidden" name="'+opt.name+'" value="'+opt.curStarts+'"/>');
+								var _this = $(this);
+								_this.addClass('stk-starts-ui');
+								var _bsArr = [];
+								for(var i = 0 ; i < opt.maxStarts ; i++){
+									var _bsItem = $('<b/>').addClass('b-s').appendTo(_this);
+									if(opt.titles && opt.titles[i]){
+										_bsItem.attr('title',opt.titles[i]);
+										if(i == opt.curStarts && opt.showTarget){
+											opt.showTarget.html(opt.titles[i]);
+										}
+									}
+									if(i <= opt.curStarts){
+										_bsItem.addClass('b-sc');
+									}
+									_bsItem.data('index',i);
+									_bsItem.hover(function(){
+										var _cur = parseInt($(this).data('index'));
+										for(var i=0;i<_bsArr.length;i++){
+											if(i<=_cur){
+												_bsArr[i].addClass('b-sc');
+											}else{
+												_bsArr[i].removeClass('b-sc');
+											}
+											if(opt.titles && opt.titles[i] && i == _cur && opt.showTarget){
+												opt.showTarget.html(opt.titles[i]);
+											}
+										}
+									},function(){
+									})
+									_bsItem.click(function(){
+										opt.curStarts = parseInt($(this).data('index'))+1;
+										_input.val(opt.curStarts);
+										if($(this).attr('title') && opt.showTarget){
+											opt.showTarget.html($(this).attr('title'));
+										}
+									})
+									_bsArr.push(_bsItem);
+								}
+								refreshStartScore();
+								_this.append(_input);
+								
+								$(this).hover(function(){
+									},function(){
+										refreshStartScore();
+									})
+								function refreshStartScore(){
+									for(var i=0;i<_bsArr.length;i++){
+										if(i<opt.curStarts){
+											_bsArr[i].addClass('b-sc');
+										}else{
+											_bsArr[i].removeClass('b-sc');
+										}
+										if(opt.titles && opt.titles[i] && i == (opt.curStarts-1) && opt.showTarget){
+											opt.showTarget.html(opt.titles[i]);
+										}
+									}
+								}
+								
+							}
+						})
+					})(jQuery);
+					$('#J_starts').startsScore({})
+                    </script>
+                    </td>
+                </tr>
+            </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="hd"><label>上传文件</label></td>
+            <td class="bd">
+                <div class="upload-box">
+                    <div class="clearfix upload-btn"><a href="#"><b class="icon-add"></b>新增文件</a></div>
+                    <ul>
+                        <li class="fileitem clearfix">
+                            <b class="icon-st47"></b>
+                            <span class="filename">上传文件.jpg</span>
+                            <span class="filesize">(40K)</span>
+                            <span class="pro-bar">
+                                <span class="pro-inner" style="width:50%"></span>
+                            </span>
+                            <span class="failure">上传失败，请重新上传！</span>
+                            <a href="#">删除</a>
+                        </li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        <tr class="btn-bar">
+        	<td class="hd">&nbsp;</td>
+            <td class="bd"><button class="stk-button stk-ext-button">保存报告</button>&nbsp;&nbsp;<button class="stk-button stk-ext-button">提交报告</button>&nbsp;&nbsp;<button class="stk-button stk-ext-button">撤回报告</button></td>
+        </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

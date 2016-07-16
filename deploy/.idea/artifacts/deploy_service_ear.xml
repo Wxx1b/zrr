@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="ear" name="deploy-service:ear">
+    <output-path>$PROJECT_DIR$/service/target</output-path>
+    <root id="archive" name="deploy-service-1.0-SNAPSHOT.ear">
+      <element id="artifact" artifact-name="deploy-service:ear exploded" />
+    </root>
+  </artifact>
+</component>

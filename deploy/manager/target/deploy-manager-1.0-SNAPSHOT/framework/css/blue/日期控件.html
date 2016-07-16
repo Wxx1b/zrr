@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>日期控件</title>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="X-UA-Compatible" content="IE=IE8" >
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="X-UA-Compatible" content="IE=IE8" >
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../js/jquery-ui.js"></script>
+<script type="text/javascript" src="../../js/jquery-plugin.js"></script>
+<script type="text/javascript" src="../../js/stk-core.js"></script>
+<script type="text/javascript" src="../../js/stk-tools.js"></script>
+<script type="text/javascript" src="../../js/stk-api.js"></script>
+<script type="text/javascript" src="../../jscal/js/jscal2.js"></script>
+<script type="text/javascript" src="../../jscal/js/lang/cn.js"></script>
+<link type="text/css" href="jquery-ui.css" rel="stylesheet" />
+<link type="text/css" href="jquery-plugin.css" rel="stylesheet" />
+<link type="text/css" href="stk.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="../../jscal/css/jscal2.css" />
+<link rel="stylesheet" type="text/css" href="../../jscal/css/border-radius.css" />
+
+</head>
+
+<body>
+<span type="component" class="stk_component_wrap" cn="datefield" id="d1_wrap" _hidden="false"
+ hideMode="display" readOnly="false" grow="false" selectOnFocus="false" inputType="date" dateFormat="yyyy-MM-dd" style="">
+ <div class="stk-date-search" id="d1_subWrap" style="display:inline-block;*display:inline;*zoom:1;float:none">
+
+
+<input class="stk-input" type="_date" id="d1" style="width:90px;"/></div>
+<script type="text/javascript">
+    var d1_hasInit;
+    var _d1;
+    $(document).ready(function(){
+        if(d1_hasInit == undefined)
+        {
+            $("#d1").addClass("stk-date-search-input").before("<div class='stk-date-aside'><div id='d1_icon' onclick='d1_refreshDate()' class='stk-ui-icon stk-date-aside-icon'></div></div>");
+            d1_initDate();
+            d1_hasInit = true;
+        }
+    });
+
+    function d1_refreshDate()
+    {
+        _d1.redraw();
+    }
+
+    function d1_beforePopup()
+    {
+        if(window['d1_errorData'])
+        {
+            $('#d1').stk_val(window['d1_errorData']);
+
+        }
+        window['d1_errorData'] = undefined;
+    }
+
+    function d1_afterHidePopup()
+    {
+    } 
+
+    function d1_initDate()
+    {
+        var config = {
+            dateFormat: "%Y-%m-%d",
+            inputField: "d1",
+            trigger: "d1_icon",
+            minuteStep:1,
+            onSelect: function() {
+                if(typeof(d1_onselect) == 'function') d1_onselect();
+                this.hide();
+                $("#d1").blur();
+            },
+            titleFormat: "%Y %B"
+        };
+        if ( jQuery.browser.msie && jQuery.browser.version < 7 )
+        {
+            config.onFocus = function ( ca )
+            {
+                if ( ca && ca.els.main && !ca.bgiframe )
+                {
+                    $( ca.els.main ).bgiframe();
+                    ca.bgiframe = true;
+                }
+            }
+        }
+        _d1 = Calendar.setup(config);
+    }
+</script>
+</span>
+
+</body>
+</html>

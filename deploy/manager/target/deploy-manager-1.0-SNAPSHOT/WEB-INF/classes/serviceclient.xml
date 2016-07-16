@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE client PUBLIC "-//SINITEK//SERVICE//SERVICECLIENTCONFIG//1_0"
+        "http://www.sinitek.com/dtd/serviceclientconfig_1_0.dtd" >
+<client>
+    <services>
+        <ejb name="manager_service" url="t3://localhost:7015" jndi="manager_service" testTime="20">
+            <jndiProp name="java.naming.factory.initial">
+                weblogic.jndi.WLInitialContextFactory
+            </jndiProp>
+        </ejb>
+    </services>
+
+    <dispatch>
+        <call functionCode="*" service="manager_service"/>
+    </dispatch>
+</client>

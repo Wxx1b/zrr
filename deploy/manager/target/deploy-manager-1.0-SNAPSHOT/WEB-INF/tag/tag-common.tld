@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+        version="2.0">
+    <description>Sirm Tag Library</description>
+    <display-name>"Sirm Web Control Tags"</display-name>
+    <tlib-version>1.0</tlib-version>
+    <short-name>sirmTag</short-name>
+    <uri>http://www.sinitek.com/sirm/common/tag</uri>
+
+
+    <tag>
+        <name>dictList</name>
+        <tag-class>com.sinitek.managerframework.dict.tag.DictionaryListTag</tag-class>
+        <body-content>JSP</body-content>
+        <!--<description>数据字典列表获取标签</description>-->
+        <attribute>
+            <name>key</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <!--<description>目录key</description>-->
+        </attribute>
+        <attribute>
+            <name>var</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <!--<description>变量</description>-->
+        </attribute>
+        <attribute>
+            <name>filterValue</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <!--<description>过滤value，“,“隔开</description>-->
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>param</name>
+        <tag-class>com.sinitek.managerframework.base.tag.IncludeParamTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>name</name>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>value</name>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>page</name>
+        <tag-class>com.sinitek.managerframework.base.tag.PageTag</tag-class>
+        <body-content>JSP</body-content>
+        <attribute>
+            <description>clazz</description>
+            <name>clazz</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>method</description>
+            <name>method</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>body</name>
+        <tag-class>com.sinitek.managerframework.base.tag.BodyTag</tag-class>
+        <body-content>JSP</body-content>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+
+</taglib>

@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>广发基金</title>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="X-UA-Compatible" content="IE=IE8" >
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../js/jquery-ui.js"></script>
+<script type="text/javascript" src="../../js/jquery-plugin.js"></script>
+<script type="text/javascript" src="../../js/stk-core.js"></script>
+<script type="text/javascript" src="../../js/stk-tools.js"></script>
+<script type="text/javascript" src="../../js/stk-api.js"></script>
+<!¨C[if IE]>
+<script type="text/javascript" src="../../js/html5.js"></script>
+<![endif]¨C>
+<link type="text/css" href="jquery-ui.css" rel="stylesheet" />
+<link type="text/css" href="jquery-plugin.css" rel="stylesheet" />
+<link type="text/css" href="stk.css" rel="stylesheet" />
+
+<!--[if IE]>
+<script type="text/javascript" src="/framework/js/html5.js"></script>
+<![endif]-->
+
+<html>
+<head>
+<title>投资研究管理系统</title>
+<style>
+.overlay {
+	-webkit-box-align: center;
+	-webkit-box-pack: center;
+	-webkit-transition: 0.25s opacity;
+	-moz-transition: 0.25s opacity;
+	transition: 0.25s opacity;
+ filter: progid:DXImageTransform.Microsoft.gradient(enabled = 'true', startColorstr = '#4C999999', endColorstr = '#07999999');
+	background: -webkit-radial-gradient(rgba(127, 127, 127, 0.5), rgba(127, 127, 127, 0.5) 35%, rgba(0, 0, 0, 0.7));
+	background: -moz-radial-gradient(rgba(127, 127, 127, 0.5), rgba(127, 127, 127, 0.5) 35%, rgba(0, 0, 0, 0.7));
+	bottom: 0;
+	display: block;
+	display: -webkit-box;
+	display: -moz-box;
+	display: box;
+	left: 0;
+	position: fixed;
+ *position: absolute;
+ *width: 100%;
+ *height: 100%;
+	right: 0;
+	top: 0;
+	z-index: 1000;
+}
+.overlay .ie {
+	background: #fff;
+	filter: alpha(opacity = 0);
+	opacity: 0;
+	position: absolute;
+	position: fixed;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+}
+.transparent {
+	opacity: 0;
+}
+.support_bg_add, .language_box {
+	-webkit-box-shadow: 0px 5px 80px #505050;
+	-moz-box-shadow: 0px 5px 80px #505050;
+	box-shadow: 0px 5px 80px #505050;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+body {
+	height: 100% !important
+}
+html {
+	height: 100%
+}
+</style>
+</head>
+<body id="body-bg">
+<section class="login-sec">
+  <div id="articleMsg" style="display:none">
+    <article class="message">
+      <p class="error" id="msg"></p>
+    </article>
+  </div>
+  <article class="login-article">
+    <form action="/logon.action" id="logonForm" method="post">
+      <ul>
+        <li class="username">
+          <label for="J_username">&nbsp;</label>
+          <input type="text" name="username" id="J_username">
+        </li>
+        <li class="username">
+          <label for="J_password">&nbsp;</label>
+          <input type="password" name="userpwd" id="J_password">
+        </li>
+        <li class="select_country">
+          <label>&nbsp;</label>
+          <select onchange="location.replace('?locale='+this.value+'&apply=true')">
+            <option
+                                    selected="selected" 
+                                    value="zh_CN"> 中国 </option>
+            <option value="en_US"><span class="size10">United States</span></option>
+          </select>
+        </li>
+        <li class="savelogin">
+          <label>&nbsp;
+            <input id="autologon" name="autologon" type="checkbox" value="1"><span>记住用户名和密码</span></label>
+        </li>
+      </ul>
+      <aside class="login-submit-button" id="submit-button">
+        <button type="button" id="loginBtn" onclick="location='index.html'"></button>
+        <span style="line-height: 24px;height: 24px;"><a id="supportBtn" href="###">支持中心</a></span>
+      </aside>
+    </form>
+  </article>
+</section>
+</body>
+</html>

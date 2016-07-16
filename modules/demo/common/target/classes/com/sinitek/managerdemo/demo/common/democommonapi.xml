@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE support PUBLIC "-//SINITEK//METADB//CONTEXTSUPPORT//1_0" "http://www.sinitek.com/dtd/contextsupport_1_0.dtd" >
+<support>
+    <bean name="demo" interface="com.sinitek.managerdemo.demo.common.api.IDemoAPI"
+          impl="com.sinitek.managerdemo.demo.common.api.DemoAPIImpl">
+        <methodDefine>
+            <method namePattern="*" transaction="SUPPORT"/>
+        </methodDefine>
+    </bean>
+</support>

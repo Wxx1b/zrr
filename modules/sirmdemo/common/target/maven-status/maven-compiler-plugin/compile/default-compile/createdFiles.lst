@@ -1,0 +1,5 @@
+com\sinitek\managerdemo\sirmdemo\common\api\SirmdemoAPIImpl.class
+com\sinitek\managerdemo\sirmdemo\common\entity\ISirmdemo.class
+com\sinitek\managerdemo\sirmdemo\common\enums\ProductTypeEnums.class
+com\sinitek\managerdemo\sirmdemo\common\api\ISirmdemoAPI.class
+com\sinitek\managerdemo\sirmdemo\common\entity\SirmdemoImpl.class

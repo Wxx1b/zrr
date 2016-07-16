@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC
+    "-//GetAhead Limited//DTD Direct Web Remoting 3.0//EN"
+    "http://directwebremoting.org/schema/dwr30.dtd">
+<dwr>
+    <!--修改该文件必须重启应用服务器-->
+    <allow>
+        <!--Sirmdemo-->
+        <create creator="new" javascript="SirmdemoAction">
+            <param name="class" value="com.sinitek.managerdemo.sirmdemo.actions.SirmdemoAction"/>
+        </create>
+        <!--start 对象转换器-->
+        <convert converter="bean" match="com.sinitek.managerdemo.sirmdemo.common.entity.*"/>
+        <!--end 对象转换器-->
+
+    </allow>
+
+    <!--签名说明，dwr方法里的参数，是集合而且集合里的对象不是基本类型，必须要在此说明，请在这里设置，重启服务器-->
+    <signatures>
+      <![CDATA[
+      ]]>
+    </signatures>
+</dwr>

@@ -1,0 +1,80 @@
+package com.sinitek.spirit.webcontrol.demo;
+
+import com.sinitek.base.mongodb.MetaDBMongoFactory;
+import com.sinitek.spirit.businlogger.BusinLoggerBean;
+import com.sinitek.spirit.webcontrol.table.*;
+import org.apache.commons.collections.map.CaseInsensitiveMap;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+/**
+ * 表格控件范例
+ */
+public class DemoTableMongoDBAction implements ITableAware
+{
+    public Object getResult(Map<String, String> map, HttpServletRequest request) throws Exception
+    {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String start = map.get("start");
+        String end = map.get("end");
+        String userID = map.get("userID");
+        String userName = map.get("userName");
+        String actionName = map.get("actionName");
+        String menuName = map.get("menuName");
+        String methodName = map.get("methodName");
+        String ipAddress = map.get("ipAddress");
+        String operateType = map.get("operateType");
+
+        Criteria criteria = new Criteria();
+        if (StringUtils.isNotBlank(start))
+        {
+            criteria = criteria.where("createTime").gt(format.parse(start));
+        }
+        if (StringUtils.isNotBlank(end))
+        {
+            criteria = criteria.where("createTime").lt(format.parse(start));
+        }
+        if (StringUtils.isNotBlank(userID))
+        {
+            criteria = criteria.where("userID").is(userID);
+        }
+        if (StringUtils.isNotBlank(userName))
+        {
+            criteria = criteria.where("userName").is(userName);
+        }
+        if (StringUtils.isNotBlank(actionName))
+        {
+            criteria = criteria.where("actionName").is(actionName);
+        }
+        if (StringUtils.isNotBlank(methodName))
+        {
+            criteria = criteria.where("methodName").is(methodName);
+        }
+        if (StringUtils.isNotBlank(menuName))
+        {
+            criteria = criteria.where("menuName").is(menuName);
+        }
+        if (StringUtils.isNotBlank(ipAddress))
+        {
+            criteria = criteria.where("ipAddress").is(ipAddress);
+        }
+        if (StringUtils.isNotBlank(operateType))
+        {
+            criteria = criteria.where("operateType").is(new Integer(operateType));
+        }
+
+        Query searchUserQuery = new Query(criteria);
+        return new MongoDBQuery(searchUserQuery, BusinLoggerBean.class);
+    }
+
+    public String setDefaultOrderBy(Map<String, String> map, HttpServletRequest request)
+    {
+        return "";
+    }
+}

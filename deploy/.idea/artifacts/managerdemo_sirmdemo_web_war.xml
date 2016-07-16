@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="managerdemo-sirmdemo-web:war">
+    <output-path>$PROJECT_DIR$/../modules/sirmdemo/web/target</output-path>
+    <root id="archive" name="managerdemo-sirmdemo-web-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="managerdemo-sirmdemo-web:war exploded" />
+    </root>
+  </artifact>
+</component>

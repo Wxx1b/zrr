@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html style="overflow:auto;">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>首页</title>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="X-UA-Compatible" content="IE=IE8" >
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="X-UA-Compatible" content="IE=IE8" >
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../js/jquery-ui.js"></script>
+<script type="text/javascript" src="../../js/jquery-plugin.js"></script>
+<script type="text/javascript" src="../../js/stk-core.js"></script>
+<script type="text/javascript" src="../../js/stk-tools.js"></script>
+<script type="text/javascript" src="../../js/stk-api.js"></script>
+<script type="text/javascript" src="../../js/stk-frame.js"></script>
+<script type="text/javascript" src="../../../demo.js"></script>
+<!¨C[if IE]>
+<script type="text/javascript" src="../../js/html5.js"></script>
+<![endif]¨C>
+<link type="text/css" href="jquery-ui.css" rel="stylesheet" />
+<link type="text/css" href="jquery-plugin.css" rel="stylesheet" />
+<link type="text/css" href="stk.css" rel="stylesheet" />
+<link type="text/css" href="frame.css" rel="stylesheet"/>
+<script type="text/javascript">
+$(function(){
+
+STK.init({
+		menuObj : menuObj
+	});
+});
+function parseSTR(o) {
+    var r = [];
+    if (typeof o == "string" || o == null) {
+        return '"' + o + '"';
+    }
+    if (typeof o == 'number') {
+        return o;
+    }
+    if (typeof o == "object") {
+        if (!o.sort) {
+            r[0] = "{"
+            for (var i in o) {
+                r[r.length] = '"' + i + '"';
+                r[r.length] = ":";
+                r[r.length] = obj2str(o[i]);
+                r[r.length] = ",";
+            }
+            r[r.length - 1] = "}"
+        } else {
+            r[0] = "["
+            for (var i = 0; i < o.length; i++) {
+                r[r.length] = obj2str(o[i]);
+                r[r.length] = ",";
+            }
+            r[r.length - 1] = "]"
+        }
+        return r.join("");
+    }
+    return o.toString();
+}
+</script>
+</head>
+
+<body>
+<header id="J_common_header" class="common-header">
+<nav class="common-header-nav">
+<ul id="J_mainnav">
+<li class='selected'><a class="nav-1 hidefocus" href="javascript:void(0);" onclick="STK.menuDo(1);"><b></b>个人中心</a></li>
+<li><a class="nav-2" href="javascript:void(0);" onclick="STK.menuDo(1);"><b></b>研究报告</a></li>
+<li><a class="nav-3" href="javascript:void(0);" onclick="STK.menuDo(2);"><b></b>模拟组合</a></li>
+<li><a class="nav-4" href="javascript:void(0);" onclick="STK.menuDo(3);"><b></b>客户关系</a></li>
+<li><a class="nav-5" href="javascript:void(0);" onclick="STK.menuDo(4);"><b></b>证券池</a></li>
+<li><a class="nav-6" href="javascript:void(0);" onclick="STK.menuDo(5);"><b></b>研究成果</a></li>
+<li><a class="nav-7" href="javascript:void(0);" onclick="STK.menuDo(6);"><b></b>打分管理</a></li>
+<li><a class="nav-8" href="javascript:void(0);" onclick="STK.menuDo(7);"><b></b>统计报表</a></li>
+<li><a class="nav-10" href="javascript:void(0);" onclick="STK.menuDo(8);"><b></b>项目管理</a></li>
+<li><a class="nav-9" href="javascript:void(0);" onclick="STK.menuDo(9);"><b></b>系统管理</a></li>
+<li><a class="nav-11" href="javascript:void(0);" onclick="STK.menuDo(10);"><b></b>行政管理</a></li>
+<li><a class="nav-12" href="javascript:void(0);" onclick="STK.menuDo(10);"><b></b>日常工作</a></li>
+</ul>
+<script type="text/javascript">
+$('#J_mainnav li').click(function(){
+	$('#J_mainnav li').removeClass('selected');
+	$(this).addClass('selected');
+});
+</script>
+</nav>
+<aside class="common-header-aside">
+    <div class="top-bar">
+        <figure class="figure">
+        <img src="../common/images/guangfa.png"> </figure>
+        <time class="time" id="time">2011-01-01 12:00:00</time>
+        <div class="skinlist">
+            <ul>
+                <li class="blue"><img src="../common/images/blank.gif" alt="蓝色" onclick="document.location='../blue/index.html'"></li>
+                <li class="default"><img src="../common/images/blank.gif" alt="黑色" onclick="document.location='../default/index.html'"></li>
+                <li class="orangeSelect"><img src="../common/images/blank.gif" alt="橙色"></li>
+				<li class="red"><img src="../common/images/blank.gif" alt="红色" onclick="document.location='../red/index.html'"></li>
+            </ul>
+        </div>
+    </div>
+    <div class="info-bar"><a href="#" class="username">陈国庆</a><b class="split">|</b><a href="#" class="message">2</a><a href="#" class="totalperson">25</a><a href="#" class="information">3</a><b class="split">|</b><a href="#" class="support">支持中心</a><b class="split">|</b><a href="#" class="logout">退出</a><a href="#" class="language"><b class="icon-world flag_us"></b>语言</a></div>
+</aside>
+</header>
+<section id="J_common_section" class="common-section">
+<aside id="J_common_aside" class="com-sec-aside">
+<h2 class="com-sec-title">
+<span id="J_main_title"></span><b class="com-sec-aside-more-opt"></b>
+</h2>
+<nav id="J_common_sec_aside_nav" class="com-sec-aside-nav">
+</nav>
+</aside>
+<b id="J_left_nav_ext_btn" class="left-nav-ext-btn"></b>
+<article id="J_common_article" class="com-art">
+<nav class="com-art-nav">
+<ul id="J_commonNavTabBar">
+</ul>
+<b class="close-all" title="关闭全部"><span class="common-bg nav-l-bg" onclick="STK.closeNav('ALL',event)"><i class="common-bg-icon nav-close"></i></span><b class="common-bg nav-r-bg"></b></b>
+</nav>
+<section id="J_common_panel_section" class="common-show-panel-section" style="position:relative">
+</section>
+</article>
+</section>
+</body>
+</html>

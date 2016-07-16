@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.sinitek.spirit:sinitek.spirit.metadb2:2.0.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/sinitek/spirit/sinitek.spirit.metadb2/2.0.0-SNAPSHOT/sinitek.spirit.metadb2-2.0.0-20160630.022301-36.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/sinitek/spirit/sinitek.spirit.metadb2/2.0.0-SNAPSHOT/sinitek.spirit.metadb2-2.0.0-20160630.022301-36-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/sinitek/spirit/sinitek.spirit.metadb2/2.0.0-SNAPSHOT/sinitek.spirit.metadb2-2.0.0-20160630.022301-36-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>报告</title>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="X-UA-Compatible" content="IE=IE8" >
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="X-UA-Compatible" content="IE=IE8" >
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../js/jquery-ui.js"></script>
+<script type="text/javascript" src="../../js/jquery-plugin.js"></script>
+<script type="text/javascript" src="../../js/stk-core.js"></script>
+<script type="text/javascript" src="../../js/stk-tools.js"></script>
+<script type="text/javascript" src="../../js/stk-api.js"></script>
+<link type="text/css" href="jquery-ui.css" rel="stylesheet" />
+<link type="text/css" href="jquery-plugin.css" rel="stylesheet" />
+<link type="text/css" href="stk.css" rel="stylesheet" />
+</script>
+
+<script type="text/javascript">
+$(function(){
+	//$('#J_fixedGrid').fixedGrid({
+	//	headTopId : 'J_fixedGrid_HT',
+	//	headLeftId : 'J_fixedGrid_HL'
+	//});
+	var grid = new STK.fixedGrid({
+		headTopId : 'J_fixedGrid_HT',
+		headLeftId : 'J_fixedGrid_HL',
+		conBoxId : 'J_fixedGrid_Con',
+		scrollXId : 'J_scrollX',
+		scrollYId : 'J_scrollY',
+		hoverCss : 'hover'
+	});
+	for(var i=0;i<80;i++){
+		$('#J_fixedGrid_HL').append('<tr><td width="80">行列1</td><td width="80">行列2</td></tr>');
+		$('#J_fixedGrid_Con').append('<tr><td width="100">内容1</td><td width="100">内容2</td><td width="100">内容3</td><td width="100">内容4</td><td width="100">内容5</td><td width="100">内容6</td><td width="100">内容7</td><td width="100">内容8</td><td width="100">内容9</td><td width="100">内容10</td><td width="100">内容11</td><td width="100">内容12</td></tr>');
+	}
+	grid.fixedGridRefresh();
+})
+</script>
+</head>
+
+<body >
+<div style="padding:30px;zoom:1;">
+    <div class="help_tips" id="levelHelpTips"><img src="images/gongshi.png" /></div>
+<div class="stk-fixed-th-box" style="padding-left:160px">
+<div class="stk-fixed-left" style="width:160px;">
+	<div class="stk-hTL">
+		<table class="fixHeadTable">
+	    <tr>
+	    <th width="80">行列1</th>
+	    <th width="80">行列2</th>
+	    </tr>
+	    </table>
+	</div>
+	<div class="stk-hL" style="height:300px">
+    	<table id="J_fixedGrid_HL" class="fixHeadTable">
+        <tbody>
+        <script type="text/javascript">
+        for(var i=0;i<80;i++){
+			document.writeln('<tr class="'+(i%2 == 0?'' : 'even')+'"><td width="80">行列1</td><td width="80">行列2</td></tr>');
+		}
+        </script>
+        </tbody>
+        </table>
+    </div>
+</div>
+<div class="stk-fixed-right" style="width:100%">
+	<div class="stk-hT" style="width:100%">
+		<table id="J_fixedGrid_HT" class="fixHeadTable" width="180%">
+	        <tr>
+	        <th width="100">头1<b class="icon-help"></b></th>
+	        <th width="100">头2</th>
+	        <th width="100">头3</th>
+	        <th width="100">头4</th>
+	        <th width="100">头5</th>
+	        <th width="100">头6</th>
+	        <th width="100">头7</th>
+	        <th width="100">头8</th>
+	        <th width="100">头9</th>
+	        <th width="100">头10</th>
+	        <th width="100">头11</th>
+	        <th width="100">头12</th>
+	        </tr>
+	    </table>
+	</div>
+	<div class="stk-con" style="width:100%;height:300px;">
+    	<table id="J_fixedGrid_Con" class="fixHeadTable" width="180%">
+        <tbody>
+        <script type="text/javascript">
+        for(var i=0;i<80;i++){
+			document.writeln('<tr class="'+(i%2 == 0?'' : 'even')+'"><td width="100">内容1</td><td width="100">内容2</td><td width="100">内容3</td><td width="100">内容4</td><td width="100">内容5</td><td width="100">内容6</td><td width="100">内容7</td><td width="100">内容8</td><td width="100">内容9</td><td width="100">内容10</td><td width="100">内容11</td><td width="100">内容12</td></tr>');
+		}
+        </script>
+        </tbody>
+        </table>
+        <div class="stk-scrollX" style="width:100%">
+        <div id="J_scrollX" class="stk-scrollBar" style="width:500px;">
+            <div class="scrLine"></div>
+        </div>
+        </div>
+        <div class="stk-scrollY" style="height:300px;">
+        <div id="J_scrollY" class="stk-scrollBar" style="height:300px;">
+        	<div class="scrLine"></div>
+       	</div>
+        </div>
+    </div>
+</div>
+</div>
+
+</div>
+</body>
+</html>

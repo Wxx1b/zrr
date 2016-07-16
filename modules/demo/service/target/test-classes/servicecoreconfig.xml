@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!DOCTYPE serviceConfig PUBLIC "-//SINITEK//SERVICE//SERVICECORECONFIG//1_0" "http://www.sinitek.com/dtd/servicecoreconfig_1_0.dtd" >
+<serviceConfig>
+    <include path="com/sinitek/managerdemo/demo/service/demoservice.xml"/>
+</serviceConfig>

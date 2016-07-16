@@ -1,0 +1,665 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>报告</title>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="X-UA-Compatible" content="IE=IE8" >
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="X-UA-Compatible" content="IE=IE8" >
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../js/jquery-ui.js"></script>
+<script type="text/javascript" src="../../js/jquery-plugin.js"></script>
+<script type="text/javascript" src="../../js/stk-core.js"></script>
+<script type="text/javascript" src="../../js/stk-tools.js"></script>
+<script type="text/javascript" src="../../js/stk-api.js"></script>
+<![if IE]>
+<script type="text/javascript" src="../../js/html5.js"></script>
+<![endif]¨C>
+<link type="text/css" href="jquery-ui.css" rel="stylesheet" />
+<link type="text/css" href="jquery-plugin.css" rel="stylesheet" />
+<link type="text/css" href="stk.css" rel="stylesheet" />
+<script>
+	$(function(){
+		var moveDwonPix = 1;
+		var enablePixMove = true;
+		var createRulerNum = function(ruler,prop,i){
+			var rulerNumStr = '';
+			var rulerProp = ruler[prop]();
+			i = i || 0;
+
+			for(i=0,times = Math.round(rulerProp / 100); i <= times; i++){
+				rulerNumStr += '<span>' + (i == 0 ? '&nbsp;' : i * 100) + '</span>';
+			}
+			
+			ruler.append(rulerNumStr);
+
+			return i;
+		}
+		var ul = $('ul.index-drag-column-ul'),
+			box = ul.parent();
+		
+		box.bind('itemindexchange',function(){return false})
+		  .bind('indexchange',function(){return false})
+		  .resize(function(){return false}).end()
+		  .delegate('li.index-drag-box','indexchange',function(e){
+			  ul.trigger('itemindexchange');
+		  })
+		  .delegate('li.index-drag-box','dragstart',{ handle:'.box-title',not:'.box-opt-bar,a,b.icon-resized' },function( ev, dd ){
+			var self = $(this);
+			dd.index = self.index();
+			dd.limit = ul.offset();
+			dd.placeholder = $('<li class="index-drag-box index-drag-box-placeholder"><div/></li>')
+            .css({
+				opacity: .3,
+				width:self.width() - 14,
+				height:self.height() - 14
+			})
+            .insertAfter(self);
+            self.css({
+				 position:'absolute',
+				 zIndex:100000
+			});
+			var uloh = ul.outerHeight();
+			var soh = self.outerWidth();
+			ul.css('cursor','move');
+			dd.items = ul.children('li').not(dd.placeholder).not(self);
+		  })
+		  .delegate('li.index-drag-box','drag',function( ev, dd ){
+			  $(this).css({
+				 top: dd.offsetY,
+		         left: dd.offsetX
+			  });
+			  dd.items.each(function(i,dom){
+				var item = $(dom);
+				var width = item.width();
+				var height = item.height();
+				var offset = item.offset();
+				if(offset.left < ev.pageX && offset.left + width > ev.pageX
+					&& offset.top < ev.pageY && offset.top + height > ev.pageY){
+					if(offset.left + (width / 2) > ev.pageX){
+						dd.placeholder.insertBefore(item);
+					} else {
+						dd.placeholder.insertAfter(item);
+					}
+					
+					return false;
+				}
+			  });
+		  })
+		  .delegate('li.index-drag-box','dragend',function( ev, dd ){
+			var self = $(this).replaceAll(dd.placeholder).css({
+				position:'',
+				zIndex:'',
+				top:'',
+				left:''
+			});
+			ul.css('cursor','');
+			if(dd.index !== self.index()){
+				self.trigger('indexchange');
+			}
+		  });
+	  box.delegate('b.icon-resized','dragstart',function( ev, dd ){
+			var self = dd.li = $(this).parents('li.index-drag-box');
+			dd.bod = self.find('div.box-body');
+            dd.resizeInfoMask = $('<div class="resize-mask"><span/></div>');
+			dd.resizeInfo = dd.resizeInfoMask.children('span');
+			dd.width = self.width();
+			dd.liOffset = self.offset();
+			dd.height = self.height();
+			dd.ulWidth = ul.width();
+			dd.ulOffset = ul.offset();
+			dd.hzlRuler = $('<div class="horizontal-ruler"><div/></div>').appendTo(document.body);
+			dd.vtlRuler = $('<div class="vertical-ruler"><div/></div>').appendTo(document.body);
+			dd.alignmentHzlLine = $('<div class="alignment-line alignment-horizontal-line"/>').appendTo(document.body);
+			dd.alignmentVtlLine = $('<div class="alignment-line alignment-vertical-line"/>').appendTo(document.body);
+
+			createRulerNum(dd.hzlRuler,'width');
+			createRulerNum(dd.vtlRuler,'height');
+			
+			dd.items = ul.children('li').not(self);
+			
+			ul.css('cursor','se-resize');
+            dd.resizeInfo.appendTo(self);
+		  })
+		  .delegate('b.icon-resized','drag',function( ev, dd ){
+			var bod = dd.bod;
+			var isAdsorb = false;
+			var w = Math.max(230, Math.min(dd.width + dd.deltaX, dd.ulWidth));
+			var li = dd.li;
+			var parts = Math.round(ev.pageX / dd.ulWidth * 20);
+			var xPix = parts * dd.ulWidth / 20;
+			if(!enablePixMove || Math.abs(ev.pageX - xPix) < 18 || ev.pageX >= dd.ulWidth){
+				w = Math.round((xPix - dd.liOffset.left) / dd.ulWidth * 100);
+				w = w >= 100 ? '100%' : w  + '%';
+				isAdsorb = true;
+				var ow = li.width();
+				if(dd.oldWidth === ow){
+					dd.fade = true;
+				}else{
+					dd.oldWidth = ow;
+					dd.fade = false;
+				}
+			}
+			
+			li.css({
+				width: w
+			});
+
+			var bodHeight = Math.max(47, dd.height + dd.deltaY - 16);
+			
+			var itemsBottom = [];
+			dd.items.each(function(i,dom){
+				var liItem = $(dom);
+				itemsBottom[i] = liItem.offset().top + liItem.height() - 10;
+			});
+
+			itemsBottom.sort(function(a,b){
+				return Math.abs(ev.pageY - a) - Math.abs(ev.pageY - b);
+			});
+
+			if(itemsBottom[0] &&  Math.abs(ev.pageY - itemsBottom[0]) < 8){
+				bodHeight = itemsBottom[0] - dd.liOffset.top - 8;
+				isAdsorb = true;
+			}
+
+            bod.css({
+                height: bodHeight
+            });
+
+            bod.children('div.box-content').css({
+				height: bodHeight - 30
+			});
+
+			if(isAdsorb && dd.fade){
+				dd.resizeInfoMask.fadeTo(800,.5);
+				dd.stoped = false;
+			}else if(!dd.stoped){
+				dd.resizeInfoMask.stop(true,true).fadeTo(800,.3);
+				dd.stoped = true;
+			}
+
+			var resHeight = dd.resizeInfoMask.height();
+
+			dd.alignmentHzlLine.css('top', dd.liOffset.top + resHeight + 4);
+			dd.alignmentVtlLine.css('left',dd.liOffset.left + li.width());
+            
+			dd.resizeInfo
+				.html((typeof w === 'number' ? w + 'px' : '<span style="color: red">'+w+'</span>') + '&nbsp;&nbsp;x&nbsp;&nbsp;' + resHeight + 'px')
+				.css('top', bodHeight / 2 - 8);
+		  })
+		  .delegate('b.icon-resized','dragend',function( ev, dd ){
+			dd.resizeInfoMask.remove();
+			var bx = $(this).parents('li.index-drag-box');
+			ul.css('cursor','');
+			dd.alignmentHzlLine.remove();
+			dd.alignmentVtlLine.remove();
+			dd.hzlRuler.remove();
+			dd.vtlRuler.remove();
+			bx.trigger('resize');
+		  }).delegate('div.box-title','dblclick',function(){
+			  var bx = $(this).parents('li.index-drag-box');
+			  if(bx[0].style.width === '100%' || bx.width() + 10 >= ul.width()){
+				bx.width(bx.data('oldWidth') || 'auto');
+			  }else{
+				bx.data('oldWidth',bx.width());
+				bx.width('100%');
+			  }
+			  bx.trigger('resize');
+		  });
+
+
+		  //test     var ul = $('ul.index-drag-column-ul')
+		  ul.delegate('li.index-drag-box','resize',function(){
+			var self = $(this).find('div.box-body');
+		  }).bind('itemindexchange',function(){
+			var uw = ul.width();
+			var itemsSize = ul.children().map(function(i,dom) {
+			  return {width:dom.style.width,height:dom.offsetHeight};
+			}).get();
+			console.log(itemsSize);
+		  });
+
+		 $('#planSelect').change(function(){
+			if(this.selectedIndex){
+				moveDwonPix = 15;
+				enablePixMove = false;
+			}else{
+				moveDwonPix = 1;
+				enablePixMove = true;
+			}
+		 });
+	});
+
+</script>
+</head>
+
+<body>
+<div class="index-main-panel">
+<select id="planSelect">
+	<option>像素与百分比方案</option>
+	<option>百分比方案</option>
+</select>
+<ul class="stk-ui-tabs-bar2">
+<LI class=stk-ui-tabs-item><A class=stk-select href="#">内部报告</A> </LI>
+<LI class=stk-ui-tabs-item><A href="#">外部报告</A> </LI>
+</ul>
+<div class="index-drag-fra">
+<!--    <div class="index-drag-column" style="margin-right:-1px;width:70%">-->
+        <ul class="index-drag-column-ul clearfix">
+        <li class="index-drag-box" style="width:100%">
+        	<div class="index-drag-box-div">
+            <b class="boxbannertop"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            <div class="box-body">
+                <b class="icon-resized"></b>
+                <div class="box-title">
+                    <b class="index-icon icon-1"></b>
+                    <h3 class="box-header-title title-1 fl mr10">热点报告</h3>
+                    <div class="fl">|<a href="#">more &raquo;</a></div>
+                </div>
+                <div class="box-content">
+                	<ul class="stk-ui-tabs-bar2">
+                    	<li class="stk-ui-tabs-item"><a href="#" class="stk-select">内部报告</a></li>
+                        <li class="stk-ui-tabs-item"><a href="#">外部报告</a></li>
+                    </ul>
+                    <ul class="rep-list-ul">
+                        <li><b class="icon-st47"></b><span class="sirm-stock-innerrating20">[强买]</span><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span class="colorRed">(255次)</span><span class="name">作者：伟亮</span></li>
+                        <li><b class="icon-st47"></b><span class="sirm-stock-innerrating30">[买入]</span><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span class="colorRed">(255次)</span><span class="name">作者：伟亮</span></li>
+                        <li><b class="icon-st47"></b><span class="sirm-stock-innerrating40">[中性]</span><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span class="colorRed">(255次)</span><span class="name">作者：伟亮</span></li>
+                        <li><b class="icon-st47"></b><span class="sirm-stock-innerrating50">[卖出]</span><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span class="colorRed">(255次)</span><span class="name">作者：伟亮</span></li>
+                        <li><b class="icon-st47"></b><span class="sirm-stock-innerrating60">[强卖]</span><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span class="colorRed">(255次)</span><span class="name">作者：伟亮</span></li>
+
+                    </ul>
+                </div>
+                <div class="box-opt-bar"><b class="common-bg-icon setting"></b><b class="common-bg-icon restore"></b><b class="common-bg-icon refresh"></b><b class="common-bg-icon close"></b></div>
+            </div>
+            <b class="boxbannerbottom"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            </div>
+        </li>
+        <li class="index-drag-box">
+        <div class="index-drag-box-div">
+            <b class="boxbannertop"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            <div class="box-body">
+				<b class="icon-resized"></b>
+                <div class="box-title">
+                    <b class="index-icon icon-2"></b>
+                    <h3 class="box-header-title title-3  fl mr10">荐股价差</h3>
+                    <div class="fl">|<a href="#">more &raquo;</a></div>
+                </div>
+                <div class="box-content">
+
+                </div>
+                <div class="box-opt-bar"><b class="common-bg-icon setting"></b><b class="common-bg-icon refresh"></b><b class="common-bg-icon close"></b></div>
+            </div>
+            <b class="boxbannerbottom"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            </div>
+        </li>
+        <li class="index-drag-box">
+        <div class="index-drag-box-div">
+            <b class="boxbannertop"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            <div class="box-body">
+				<b class="icon-resized"></b>
+                <div class="box-title">
+                    <b class="index-icon icon-6"></b>
+                    <h3 class="box-header-title title-5 fl mr10">关注报告</h3>
+                    <div class="fl">|<a href="#">more &raquo;</a></div>
+                </div>
+                <div class="box-content">
+                	<ul class="stk-ui-tabs-bar2">
+                    	<li class="stk-ui-tabs-item"><a href="#" class="stk-select">内部报告</a></li>
+                        <li class="stk-ui-tabs-item"><a href="#">外部报告</a></li>
+                    </ul>
+                    <ul class="rep-list-ul">
+                        <li><b class="icon-st47"></b><span class="sirm-stock-innerrating20">[强买]</span><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span class="name">银河证券</span></li>
+                        <li><b class="icon-st47"></b><span class="sirm-stock-innerrating30">[买入]</span><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span class="name">银河证券</span></li>
+                        <li><b class="icon-st47"></b><span class="sirm-stock-innerrating40">[中性]</span><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span class="name">银河证券</span></li>
+                        <li><b class="icon-st47"></b><span class="sirm-stock-innerrating50">[卖出]</span><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span class="name">银河证券</span></li>
+                        <li><b class="icon-st47"></b><span class="sirm-stock-innerrating60">[强卖]</span><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span class="name">银河证券</span></li>
+
+                    </ul>
+                </div>
+                <div class="box-opt-bar"><b class="common-bg-icon setting"></b><b class="common-bg-icon refresh"></b><b class="common-bg-icon close"></b></div>
+            </div>
+            <b class="boxbannerbottom"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            </div>
+        </li>
+        <li class="index-drag-box">
+        <div class="index-drag-box-div">
+            <b class="boxbannertop"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            <div class="box-body">
+				<b class="icon-resized"></b>
+                <div class="box-title">
+                    <b class="index-icon icon-3"></b>
+                    <h3 class="box-header-title title-5 fl mr10">最新外部报告</h3>
+                    <div class="fl">|<a href="#">more &raquo;</a></div>
+                </div>
+                <div class="box-content">
+                    <ul class="rep-list-ul">
+                        <li><b class="icon-unread"></b></b><b class="icon-st47"></b><span class="sirm-stock-innerrating20">[强买]</span><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span class="name">银河证券</span></li>
+                        <li><b class="icon-st47"></b><span class="sirm-stock-innerrating30">[买入]</span><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span class="name">银河证券</span></li>
+                        <li><b class="icon-st47"></b><span class="sirm-stock-innerrating40">[中性]</span><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span class="name">银河证券</span></li>
+                        <li><b class="icon-st47"></b><span class="sirm-stock-innerrating50">[卖出]</span><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span class="name">银河证券</span></li>
+                        <li><b class="icon-st47"></b><span class="sirm-stock-innerrating60">[强卖]</span><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span class="name">银河证券</span></li>
+
+                    </ul>
+                </div>
+                <div class="box-opt-bar"><b class="common-bg-icon setting"></b><b class="common-bg-icon refresh"></b><b class="common-bg-icon close"></b></div>
+            </div>
+            <b class="boxbannerbottom"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            </div>
+        </li>
+        <li class="index-drag-box">
+        <div class="index-drag-box-div">
+            <b class="boxbannertop"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            <div class="box-body">
+				<b class="icon-resized"></b>
+                <div class="box-title">
+                    <b class="index-icon icon-3"></b>
+                    <h3 class="box-header-title title-5 fl mr10">最新内部报告</h3>
+                    <div class="fl">|<a href="#">more &raquo;</a></div>
+                </div>
+                <div class="box-content">
+                    <ul class="rep-list-ul">
+                        <li><b class="icon-st47"></b><span class="sirm-stock-innerrating20">[强买]</span><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span class="name">作者：王城</span></li>
+                        <li><b class="icon-st47"></b><span class="sirm-stock-innerrating30">[买入]</span><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span class="name">作者：王城</span></li>
+                        <li><b class="icon-st47"></b><span class="sirm-stock-innerrating40">[中性]</span><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span class="name">作者：王城</span></li>
+                        <li><b class="icon-st47"></b><span class="sirm-stock-innerrating50">[卖出]</span><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span class="name">作者：王城</span></li>
+                        <li><b class="icon-st47"></b><span class="sirm-stock-innerrating60">[强卖]</span><a href="javascript:void(0);">光迅科技(002281)动态报告</a><span class="name">作者：王城</span></li>
+
+                    </ul>
+                </div>
+                <div class="box-opt-bar"><b class="common-bg-icon setting"></b><b class="common-bg-icon refresh"></b><b class="common-bg-icon close"></b></div>
+            </div>
+            <b class="boxbannerbottom"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            </div>
+        </li>
+        <li class="index-drag-box">
+        <div class="index-drag-box-div">
+            <b class="boxbannertop"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            <div class="box-body">
+				<b class="icon-resized"></b>
+                <div class="box-title">
+                    <b class="index-icon icon-10"></b>
+                    <h3 class="box-header-title title-5 fl mr10">股票研究跟踪</h3>
+                    <div class="fl">|<a href="#">more &raquo;</a></div>
+                </div>
+                <div class="box-content">
+                	<table width="100%" class="stk-table-st5">
+                    	<thead class="stk-fb">
+                          <tr>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                            <th colspan="2">EPS</th>
+                            <th colspan="2">PE</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                          </tr>
+                          <tr>
+                            <th class="bd">股票名称</th>
+                            <th class="bd">所属行业</th>
+                            <th class="bd">内部</th>
+                            <th class="bd">一致预期</th>
+                            <th class="bd">内部</th>
+                            <th class="bd">一致预期</th>
+                            <th class="bd">昨收盘</th>
+                            <th class="bd">涨幅</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="stk-table-tr-odd">
+                            <td class="alignC"><a href="#">同方股份(600100)</a></td>
+                            <td class="alignC"><a href="#">信息设备</a></td>
+                            <td class="bl">&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td class="bl">&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td class="alignR bl">8.88</td>
+                            <td class="alignR"><span class="colorGreen">-0.22%</span></td>
+                          </tr>
+                          <tr class="stk-table-tr-even">
+                            <td class="alignC"><a href="#">同方股份(600100)</a></td>
+                            <td class="alignC"><a href="#">信息设备</a></td>
+                            <td class="bl">&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td class="bl">&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td class="alignR bl">8.88</td>
+                            <td class="alignR"><span class="colorRed">0.22%</span></td>
+                          </tr>
+                          <tr class="stk-table-tr-odd">
+                            <td class="alignC"><a href="#">同方股份(600100)</a></td>
+                            <td class="alignC"><a href="#">信息设备</a></td>
+                            <td class="bl">&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td class="bl">&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td class="alignR bl">8.88</td>
+                            <td class="alignR"><span class="colorGreen">-0.22%</span></td>
+                          </tr>
+                          <tr class="stk-table-tr-even">
+                            <td class="alignC"><a href="#">同方股份(600100)</a></td>
+                            <td class="alignC"><a href="#">信息设备</a></td>
+                            <td class="bl">&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td class="bl">&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td class="alignR bl">8.88</td>
+                            <td class="alignR"><span class="colorGreen">-0.22%</span></td>
+                          </tr>
+                        </tbody>
+                    </table>
+        </div>
+                <div class="box-opt-bar"><b class="common-bg-icon setting"></b><b class="common-bg-icon refresh"></b><b class="common-bg-icon close"></b></div>
+            </div>
+            <b class="boxbannerbottom"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            </div>
+        </li>
+        <li class="index-drag-box">
+        <div class="index-drag-box-div">
+            <b class="boxbannertop"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            <div class="box-body">
+				<b class="icon-resized"></b>
+                <div class="box-title">
+                    <b class="index-icon icon-11"></b>
+                    <h3 class="box-header-title title-5 fl mr10">股票评级变化</h3>
+                    <div class="fl">|<a href="#">more &raquo;</a></div>
+                </div>
+                <div class="box-content">
+					<table width="100%" class="stk-table-st5">
+                    	<thead class="stk-fb">
+                          <tr>
+                            <th class="bd">股票名称</th>
+                            <th class="bd">最新评级</th>
+                            <th class="bd">上次评级</th>
+                            <th class="bd">趋势</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="stk-table-tr-odd">
+                            <td class="alignC"><a href="#">同方股份(600100)</a></td>
+                            <td class="alignC"><span class="sirm-stock-innerrating20">[强买]</span><a href="#">(王志华 于 2011-09-06)</a></td>
+                            <td class="alignC"><span class="sirm-stock-innerrating60">[强卖]</span>(王志华 于 2011-09-06)</td>
+                            <td><b class="sirm-rating-change-same"></b>持平</td>
+                          </tr>
+                          <tr class="stk-table-tr-even">
+                            <td class="alignC"><a href="#">同方股份(600100)</a></td>
+                            <td class="alignC"><span class="sirm-stock-innerrating60">[强卖]</span><a href="#">(王志华 于 2011-09-06)</a></td>
+                            <td class="alignC"><span class="sirm-stock-innerrating60">[强卖]</span>(王志华 于 2011-09-06)</td>
+                            <td><b class="sirm-rating-change-first"></b>首次</td>
+                          </tr>
+                          <tr class="stk-table-tr-odd">
+                            <td class="alignC"><a href="#">同方股份(600100)</a></td>
+                            <td class="alignC"><span class="sirm-stock-innerrating20">[强买]</span><a href="#">(王志华 于 2011-09-06)</a></td>
+                            <td class="alignC"><span class="sirm-stock-innerrating60">[强卖]</span>(王志华 于 2011-09-06)</td>
+                            <td><b class="sirm-rating-change-up"></b>调高</td>
+                          </tr>
+                          <tr class="stk-table-tr-even">
+                            <td class="alignC"><a href="#">同方股份(600100)</a></td>
+                            <td class="alignC"><span class="sirm-stock-innerrating60">[强卖]</span><a href="#">(王志华 于 2011-09-06)</a></td>
+                            <td class="alignC"><span class="sirm-stock-innerrating60">[强卖]</span>(王志华 于 2011-09-06)</td>
+                            <td><b class="sirm-rating-change-down"></b>调低</td>
+                          </tr>
+                        </tbody>
+                    </table>
+              </div>
+                <div class="box-opt-bar"><b class="common-bg-icon setting"></b><b class="common-bg-icon refresh"></b><b class="common-bg-icon close"></b></div>
+            </div>
+            <b class="boxbannerbottom"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            </div>
+        </li>
+        <li class="index-drag-box">
+        <div class="index-drag-box-div">
+            <b class="boxbannertop"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            <div class="box-body">
+				<b class="icon-resized"></b>
+                <div class="box-title">
+                    <b class="index-icon icon-5"></b>
+                    <h3 class="box-header-title title-5 fl mr10">我的事宜</h3>
+                    <div class="fl">|<a href="#">more &raquo;</a></div>
+              </div>
+                <div class="box-content">
+                	<ul class="rep-list-ul">
+                    	<li class="bd"><a href="#" class="task">2011-09-05 完成报告审核任务的全面工作</a><a href="#" class="stk-button stk-button-st-5 active">处理</a></li>
+                    	<li class="bd"><a href="#" class="task">2011-09-05 完成报告审核任务的全面工作</a><a href="#" class="stk-button stk-button-st-5 active">处理</a></li>
+                    	<li class="bd"><a href="#" class="task">2011-09-05 完成报告审核任务的全面工作</a><a href="#" class="stk-button stk-button-st-5 active">处理</a></li>
+                    </ul>
+                </div>
+                <div class="box-opt-bar"><b class="common-bg-icon setting"></b><b class="common-bg-icon refresh"></b><b class="common-bg-icon close"></b></div>
+            </div>
+            <b class="boxbannerbottom"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            </div>
+        </li>
+<!--        </ul>
+    </div>
+    <div class="index-drag-column" style="width:30%">
+        <ul class="index-drag-column-ul">-->
+        <li class="index-drag-box">
+        <div class="index-drag-box-div">
+            <b class="boxbannertop"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            <div class="box-body">
+				<b class="icon-resized"></b>
+                <div class="box-title">
+                    <b class="index-icon icon-4"></b>
+                    <h3 class="box-header-title title-2 fl mr10">我的日程</h3>
+                    <div class="fl">|<a href="#">more &raquo;</a></div>
+                </div>
+                <div class="box-content">
+                	<div class="box-calendar">
+                    	<p class="calendar"><img src="../../../../WebControl/web/framework/css/default/images/calendar.png" width="194" height="161"></p>
+                    </div>
+              <dl class="cal-list-dl">
+                        <dt>今天日程：</dt><dd class="stk-tr"><a href="#" class="stk-button week">周</a><a href="#" class="stk-button month">月</a></dd>
+                        <dt>AM 10:00</dt><dd><b class="icon-st27"></b><a href="">完成报告</a><span>&nbsp;-&nbsp;公司内部报告</span></dd>
+                        <dt>PM 13:00</dt><dd><b class="icon-st26"></b><a href="">完成报告</a><span style="display:none">&nbsp;-&nbsp;公司内部报告</span></dd>
+                        <dt>PM 14:00</dt><dd><b class="icon-st26"></b><a href="">完成报告</a><span style="display:none">&nbsp;-&nbsp;公司内部报告</span></dd>
+                        <dt>PM 15:00</dt><dd><b class="icon-st26"></b><a href="">完成报告</a><span style="display:none">&nbsp;-&nbsp;公司内部报告</span></dd>
+                    </dl>
+                </div>
+                <div class="box-opt-bar"><b class="common-bg-icon setting"></b><b class="common-bg-icon refresh"></b><b class="common-bg-icon close"></b></div>
+            </div>
+            <b class="boxbannerbottom"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            </div>
+        </li>
+        <li class="index-drag-box">
+        <div class="index-drag-box-div">
+            <b class="boxbannertop"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            <div class="box-body">
+				<b class="icon-resized"></b>
+                <div class="box-title">
+                    <b class="index-icon icon-5"></b>
+                    <h3 class="box-header-title title-4 fl mr10">我的事宜</h3>
+                    <div class="fl">|<a href="#">more &raquo;</a></div>
+                </div>
+                <div class="box-content">
+                  	<ul class="rep-list-ul">
+                    	<li class="bd"><a href="#" class="task">2011-09-05 完成报告审核任务的全面工作</a><a href="#" class="stk-button stk-button-st-5 active">处理</a></li>
+                    	<li class="bd"><a href="#" class="task">2011-09-05 完成报告审核任务的全面工作</a><a href="#" class="stk-button stk-button-st-5 active">处理</a></li>
+                    	<li class="bd"><a href="#" class="task">2011-09-05 完成报告审核任务的全面工作</a><a href="#" class="stk-button stk-button-st-5 active">处理</a></li>
+                    </ul>
+                </div>
+                <div class="box-opt-bar"><b class="common-bg-icon setting"></b><b class="common-bg-icon refresh"></b><b class="common-bg-icon close"></b></div>
+            </div>
+            <b class="boxbannerbottom"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            </div>
+        </li>
+        <li class="index-drag-box">
+        <div class="index-drag-box-div">
+            <b class="boxbannertop"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            <div class="box-body">
+				<b class="icon-resized"></b>
+                <div class="box-title">
+                    <b class="index-icon icon-7"></b>
+                    <h3 class="box-header-title title-6 fl mr10">部门公告</h3>
+                    <div class="fl">|<a href="#">more &raquo;</a></div>
+                </div>
+                <div class="box-content">
+                	<div class="box-department">
+                    	<h4><a href="#">2011-09-01 全公司公告</a></h4>
+                        <p>国农科技 [风险提示,停牌] 深圳中国农大科技股份有限公司股票复牌国农科技[风险提示,停牌] 深圳中国农大科技...</p>
+                    </div>
+                    <ul class="dep-list-ul">
+                        <li><a href="javascript:void(0);">2011-09-01 全公司公告</a></li>
+                        <li><a href="javascript:void(0);">2011-09-01 全公司公告</a></li>
+                        <li><a href="javascript:void(0);">2011-09-01 全公司公告</a></li>
+                        <li><a href="javascript:void(0);">2011-09-01 全公司公告</a></li>
+                        <li><a href="javascript:void(0);">2011-09-01 全公司公告</a></li>
+                    </ul>
+                </div>
+                <div class="box-opt-bar"><b class="common-bg-icon setting"></b><b class="common-bg-icon refresh"></b><b class="common-bg-icon close"></b></div>
+            </div>
+            <b class="boxbannerbottom"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            </div>
+        </li>
+        <li class="index-drag-box">
+        <div class="index-drag-box-div">
+            <b class="boxbannertop"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            <div class="box-body">
+				<b class="icon-resized"></b>
+                <div class="box-title">
+                    <b class="index-icon icon-8"></b>
+                    <h3 class="box-header-title title-6 fl mr10">公司公告</h3>
+                    <div class="fl">|<a href="#">more &raquo;</a></div>
+                </div>
+                <div class="box-content">
+                  	<ul class="rep-list-ul">
+                    	<li class="bd">2011-09-05 <span class="colorGreen">国农科技</span><span class="colorRed">[风险提示，停牌]</span><p><a href="#">深圳中国农大科技股份有限公司股票复牌公告</a></p></li>
+                    	<li class="bd">2011-09-05 <span class="colorGreen">国农科技</span><span class="colorRed">[风险提示，停牌]</span><p><a href="#">深圳中国农大科技股份有限公司股票复牌公告</a></p></li>
+                    	<li class="bd">2011-09-05 <span class="colorGreen">国农科技</span><span class="colorRed">[风险提示，停牌]</span><p><a href="#">深圳中国农大科技股份有限公司股票复牌公告</a></p></li>
+                    </ul>
+                </div>
+                <div class="box-opt-bar"><b class="common-bg-icon setting"></b><b class="common-bg-icon refresh"></b><b class="common-bg-icon close"></b></div>
+            </div>
+            <b class="boxbannerbottom"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            </div>
+        </li>
+        <li class="index-drag-box">
+        <div class="index-drag-box-div">
+            <b class="boxbannertop"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            <div class="box-body">
+				<b class="icon-resized"></b>
+                <div class="box-title">
+                    <b class="index-icon icon-9"></b>
+                    <h3 class="box-header-title title-6 fl mr10">我的消息</h3>
+                    <div class="fl">|<a href="#">more &raquo;</a></div>
+                </div>
+                <div class="box-content">
+                  	<ul class="rep-list-ul">
+                    	<li class="bd"><a href="#">2011-09-05 完成报告审核任务的全面工作</a><span class="date stk-tr">今天 17:46 [管理员] </span></li>
+                    	<li class="bd"><a href="#">2011-09-05 完成报告审核任务的全面工作</a><span class="date stk-tr">今天 17:46 [管理员] </span></li>
+                    	<li class="bd"><a href="#">2011-09-05 完成报告审核任务的全面工作</a><span class="date stk-tr">今天 17:46 [管理员] </span></li>
+                    </ul>
+                </div>
+                <div class="box-opt-bar"><b class="common-bg-icon setting"></b><b class="common-bg-icon refresh"></b><b class="common-bg-icon close"></b></div>
+            </div>
+            <b class="boxbannerbottom"><b class="b-1"></b><b class="b-2"></b><b class="b-3"></b></b>
+            </div>
+        </li>
+        </ul>
+<!--    </div>-->
+</div>
+</div>
+</body>
+</html>
+

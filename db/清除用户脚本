@@ -1,0 +1,4 @@
+delete from um_userinfo where userid not in (1,962);
+delete from sprt_orgobject where objid not in (1,2,100001060);
+delete from sprt_orgrela ;
+delete from sprt_rightauth where authorgid not in ('99999','999000001');

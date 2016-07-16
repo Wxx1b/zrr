@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.sinitek.managerframework:managerframework-base-action:1.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/sinitek/managerframework/managerframework-base-action/1.0-SNAPSHOT/managerframework-base-action-1.0-20160712.061532-9.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/sinitek/managerframework/managerframework-base-action/1.0-SNAPSHOT/managerframework-base-action-1.0-20160712.061532-9-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/sinitek/managerframework/managerframework-base-action/1.0-SNAPSHOT/managerframework-base-action-1.0-20160712.061532-9-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

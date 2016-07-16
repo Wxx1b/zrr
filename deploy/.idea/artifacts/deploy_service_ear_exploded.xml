@@ -1,0 +1,65 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="deploy-service:ear exploded">
+    <output-path>$PROJECT_DIR$/service/target/deploy-service-1.0-SNAPSHOT</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="deploy-service/javaeeApplication/JavaEE" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/service/target/deploy-service-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="dir-copy" path="$PROJECT_DIR$/service/src/main/resources" />
+      <element id="directory" name="APP-INF">
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$MAVEN_REPOSITORY$/com/sinitek/spirit/spirit.service.core/2.0-SNAPSHOT/spirit.service.core-2.0-20160602.055248-19.jar" output-file-name="spirit.service.core-2.0-SNAPSHOT.jar" />
+          <element id="file-copy" path="$MAVEN_REPOSITORY$/com/sinitek/spirit/sinitek.spirit.metadb2/2.0.0-SNAPSHOT/sinitek.spirit.metadb2-2.0.0-20160630.022301-36.jar" output-file-name="sinitek.spirit.metadb2-2.0.0-SNAPSHOT.jar" />
+          <element id="library" level="project" name="Maven: org.mongodb:mongo-java-driver:2.10.1" />
+          <element id="library" level="project" name="Maven: org.springframework.data:spring-data-mongodb:1.3.3.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-tx:3.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aop:3.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context:3.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-asm:3.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-beans:3.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-core:3.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-expression:3.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.data:spring-data-commons:1.6.3.RELEASE" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.1" />
+          <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.7.1" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate:3.2.6.ga" />
+          <element id="library" level="project" name="Maven: net.sf.ehcache:ehcache:1.2.3" />
+          <element id="library" level="project" name="Maven: asm:asm-attrs:1.5.3" />
+          <element id="library" level="project" name="Maven: dom4j:dom4j:1.6.1" />
+          <element id="library" level="project" name="Maven: antlr:antlr:2.7.6" />
+          <element id="library" level="project" name="Maven: cglib:cglib:2.1_3" />
+          <element id="library" level="project" name="Maven: asm:asm:1.5.3" />
+          <element id="library" level="project" name="Maven: javax.transaction:jta:1.1" />
+          <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
+          <element id="library" level="project" name="Maven: commons-beanutils:commons-beanutils:1.6" />
+          <element id="library" level="project" name="Maven: commons-dbcp:commons-dbcp:1.1" />
+          <element id="library" level="project" name="Maven: commons-pool:commons-pool:1.1" />
+          <element id="library" level="project" name="Maven: junit:junit:3.8.1" />
+          <element id="library" level="project" name="Maven: xml-apis:xml-apis:1.0.b2" />
+          <element id="library" level="project" name="Maven: xerces:xercesImpl:2.0.2" />
+          <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.4" />
+          <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.2.1" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:3.2.6.RELEASE" />
+          <element id="library" level="project" name="Maven: oracle.jdbc.OracleDriver:ojdbc:14" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.10" />
+          <element id="library" level="project" name="Maven: c3p0:c3p0:0.9.1.2" />
+          <element id="library" level="project" name="Maven: sfm.tools:com.sinitek.base.control.server:0.9.0" />
+          <element id="library" level="project" name="Maven: org.apache.axis:axis:1.4" />
+          <element id="library" level="project" name="Maven: net.sf.json-lib:json-lib:jdk15:2.4" />
+          <element id="library" level="project" name="Maven: commons-logging:commons-logging:1.1.1" />
+          <element id="library" level="project" name="Maven: net.sf.ezmorph:ezmorph:1.0.6" />
+          <element id="library" level="project" name="Maven: sfm.tools:com.sinitek.spirit.service.adapter:1.0.0for14" />
+          <element id="archive" name="managerdemo-demo-service-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="managerdemo-demo-service" />
+          </element>
+          <element id="archive" name="managerdemo-demo-common-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="managerdemo-demo-common" />
+          </element>
+          <element id="file-copy" path="$MAVEN_REPOSITORY$/com/sinitek/managerframework/managerframework-core-common/1.0-SNAPSHOT/managerframework-core-common-1.0-20160613.085717-4.jar" output-file-name="managerframework-core-common-1.0-SNAPSHOT.jar" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
